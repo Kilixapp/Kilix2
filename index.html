@@ -55,7 +55,6 @@
                     aria-label="فتح القائمة"
                     aria-expanded="false"
                     aria-haspopup="true"
-                    onclick="toggleKilixMenu(event)"
                 >
                     <span></span>
                     <span></span>
@@ -69,29 +68,14 @@
                     id="menuDropdown"
                 >
 
-                    <!-- DOWNLOAD -->
-                    <a
-                        href="#download"
-                        onclick="closeKilixMenu()"
-                    >
+                    <a href="#download">
                         <i class="fa-solid fa-mobile-screen-button"></i>
-
-                        <span>
-                            تحميل التطبيق
-                        </span>
+                        <span>تحميل التطبيق</span>
                     </a>
 
-
-                    <!-- CONTACT -->
-                    <a
-                        href="#contact"
-                        onclick="closeKilixMenu()"
-                    >
+                    <a href="#contact">
                         <i class="fa-solid fa-headset"></i>
-
-                        <span>
-                            تواصل معنا
-                        </span>
+                        <span>تواصل معنا</span>
                     </a>
 
                 </div>
@@ -115,10 +99,7 @@
                 class="btn-download-nav"
             >
                 <i class="fa-solid fa-download"></i>
-
-                <span>
-                    حمّل التطبيق
-                </span>
+                <span>حمّل التطبيق</span>
             </a>
 
         </div>
@@ -132,11 +113,7 @@
 
     <main>
 
-
-        <!-- =====================================
-             HERO
-        ====================================== -->
-
+        <!-- HERO -->
         <section class="hero">
 
             <div class="container hero-container">
@@ -336,7 +313,7 @@
 
 
     <!-- =========================================
-         FOOTER / CONTACT
+         FOOTER
     ========================================== -->
 
     <footer
@@ -440,101 +417,9 @@
 
 
     <!-- =========================================
-         MENU JAVASCRIPT
-         يعمل مباشرة من نفس الصفحة
+         JAVASCRIPT
     ========================================== -->
 
-    <script>
-
-        function toggleKilixMenu(event) {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const wrapper =
-                document.querySelector(".menu-wrapper");
-
-            const button =
-                document.getElementById("menuToggle");
-
-            if (!wrapper || !button) {
-                return;
-            }
-
-            const isOpen =
-                wrapper.classList.toggle("open");
-
-            button.classList.toggle(
-                "active",
-                isOpen
-            );
-
-            button.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-        }
-
-
-        function closeKilixMenu() {
-
-            const wrapper =
-                document.querySelector(".menu-wrapper");
-
-            const button =
-                document.getElementById("menuToggle");
-
-            if (!wrapper || !button) {
-                return;
-            }
-
-            wrapper.classList.remove("open");
-
-            button.classList.remove("active");
-
-            button.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-        }
-
-
-        /* إغلاق القائمة عند الضغط خارجها */
-        document.addEventListener(
-            "click",
-            function (event) {
-
-                const wrapper =
-                    document.querySelector(".menu-wrapper");
-
-                if (!wrapper) {
-                    return;
-                }
-
-                if (!wrapper.contains(event.target)) {
-                    closeKilixMenu();
-                }
-
-            }
-        );
-
-
-        /* إغلاق القائمة بزر ESC */
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Escape") {
-                    closeKilixMenu();
-                }
-
-            }
-        );
-
-    </script>
-
-
-    <!-- JAVASCRIPT FILE -->
     <script src="script.js"></script>
 
 </body>
