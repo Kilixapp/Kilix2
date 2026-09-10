@@ -68,6 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     // 3. إضافة تأثير الحركة الذكية للعناصر عند التمرير (Scroll Animations)
     // -------------------------------------------------------------
+    const animatedElements = document.querySelectorAll('.feature-card, .card-item, .trust-banner, .phone-wrapper');
+    
+    // إعداد القيم الأولية عبر الـ JS أو يمكن نقلها لملف الـ CSS لتكون أطهر
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    });
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -77,30 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // تطبيق الحركة مباشرة عند ظهور العنصر بكفاءة عالية
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 entry.target.classList.add('animate-in');
                 observer.unobserve(entry.target); // تشغيل الحركة مرة واحدة فقط
             }
         });
     }, observerOptions);
 
-    // العناصر المستهدفة بالحركة
-    const animatedElements = document.querySelectorAll('.feature-card, .card-item, .trust-banner, .phone-wrapper');
-    
     animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         animateOnScroll.observe(el);
-    });
-
-    // إضافة الكلاس الخاص بالحركة عبر JS لتنسيق الانتقال
-    document.addEventListener('scroll', () => {
-        animatedElements.forEach(el => {
-            if (el.classList.contains('animate-in')) {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }
-        });
     });
 
     // -------------------------------------------------------------
@@ -118,3 +114,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+    
