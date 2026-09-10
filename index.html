@@ -45,7 +45,7 @@
 
         <div class="container nav-container">
 
-            <!-- Menu -->
+            <!-- MENU -->
             <div class="menu-wrapper">
 
                 <button
@@ -55,6 +55,7 @@
                     aria-label="فتح القائمة"
                     aria-expanded="false"
                     aria-haspopup="true"
+                    onclick="toggleKilixMenu(event)"
                 >
                     <span></span>
                     <span></span>
@@ -62,33 +63,35 @@
                 </button>
 
 
-                <!-- Dropdown Menu -->
+                <!-- DROPDOWN MENU -->
                 <div
                     class="menu-dropdown"
                     id="menuDropdown"
                 >
 
-                    <!-- Download -->
-                    <a href="#download">
-
+                    <!-- DOWNLOAD -->
+                    <a
+                        href="#download"
+                        onclick="closeKilixMenu()"
+                    >
                         <i class="fa-solid fa-mobile-screen-button"></i>
 
                         <span>
                             تحميل التطبيق
                         </span>
-
                     </a>
 
 
-                    <!-- Contact -->
-                    <a href="#contact">
-
+                    <!-- CONTACT -->
+                    <a
+                        href="#contact"
+                        onclick="closeKilixMenu()"
+                    >
                         <i class="fa-solid fa-headset"></i>
 
                         <span>
                             تواصل معنا
                         </span>
-
                     </a>
 
                 </div>
@@ -96,7 +99,7 @@
             </div>
 
 
-            <!-- Logo -->
+            <!-- LOGO -->
             <a
                 href="#"
                 class="logo"
@@ -106,7 +109,7 @@
             </a>
 
 
-            <!-- Download Button -->
+            <!-- DOWNLOAD BUTTON -->
             <a
                 href="#download"
                 class="btn-download-nav"
@@ -140,8 +143,7 @@
 
                 <div class="hero-content">
 
-
-                    <!-- Badge -->
+                    <!-- BADGE -->
                     <div class="badge">
 
                         <i class="fa-solid fa-location-dot"></i>
@@ -153,7 +155,7 @@
                     </div>
 
 
-                    <!-- Title -->
+                    <!-- TITLE -->
                     <h1 class="hero-title">
 
                         <span class="title-line title-line-dark">
@@ -167,14 +169,14 @@
                     </h1>
 
 
-                    <!-- Underline -->
+                    <!-- UNDERLINE -->
                     <div
                         class="title-underline"
                         aria-hidden="true"
                     ></div>
 
 
-                    <!-- Description -->
+                    <!-- DESCRIPTION -->
                     <p class="hero-description">
                         اكتشف المنتجات، قارن أسعار الجملة،
                         تعرّف على الموردين واطلب مباشرة
@@ -188,12 +190,11 @@
                         id="download"
                     >
 
-                        <!-- Android -->
+                        <!-- ANDROID -->
                         <a
                             href="#"
                             class="btn btn-primary"
                         >
-
                             <i class="fa-brands fa-android"></i>
 
                             <span>
@@ -201,28 +202,25 @@
                             </span>
 
                             <i class="fa-solid fa-arrow-left btn-arrow"></i>
-
                         </a>
 
 
-                        <!-- iOS -->
+                        <!-- IOS -->
                         <a
                             href="#"
                             class="btn btn-secondary"
                         >
-
                             <i class="fa-brands fa-apple"></i>
 
                             <span>
                                 App Store
                             </span>
-
                         </a>
 
                     </div>
 
 
-                    <!-- Availability -->
+                    <!-- AVAILABILITY -->
                     <div class="platform-availability">
 
                         <span>
@@ -256,8 +254,7 @@
 
                 <div class="features-grid">
 
-
-                    <!-- Feature 1 -->
+                    <!-- FEATURE 1 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -272,7 +269,7 @@
                     </article>
 
 
-                    <!-- Feature 2 -->
+                    <!-- FEATURE 2 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -287,7 +284,7 @@
                     </article>
 
 
-                    <!-- Feature 3 -->
+                    <!-- FEATURE 3 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -302,7 +299,7 @@
                     </article>
 
 
-                    <!-- Feature 4 -->
+                    <!-- FEATURE 4 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -349,8 +346,7 @@
 
         <div class="container footer-container">
 
-
-            <!-- Footer Brand -->
+            <!-- FOOTER BRAND -->
             <div class="footer-brand">
 
                 <a
@@ -368,11 +364,10 @@
             </div>
 
 
-            <!-- Contact Links -->
+            <!-- CONTACT LINKS -->
             <div class="footer-contact">
 
-
-                <!-- Facebook -->
+                <!-- FACEBOOK -->
                 <a
                     href="https://www.facebook.com/profile.php?id=61593413597222"
                     target="_blank"
@@ -380,7 +375,6 @@
                     class="footer-link"
                     aria-label="Kilix على Facebook"
                 >
-
                     <span class="footer-icon">
                         <i class="fa-brands fa-facebook-f"></i>
                     </span>
@@ -388,11 +382,10 @@
                     <span>
                         Facebook
                     </span>
-
                 </a>
 
 
-                <!-- Instagram -->
+                <!-- INSTAGRAM -->
                 <a
                     href="https://www.instagram.com/kilixapp/?utm_source=ig_web_button_share_sheet"
                     target="_blank"
@@ -400,7 +393,6 @@
                     class="footer-link"
                     aria-label="Kilix على Instagram"
                 >
-
                     <span class="footer-icon">
                         <i class="fa-brands fa-instagram"></i>
                     </span>
@@ -408,17 +400,15 @@
                     <span>
                         Instagram
                     </span>
-
                 </a>
 
 
-                <!-- Email -->
+                <!-- EMAIL -->
                 <a
                     href="mailto:kilixservice@gmail.com"
                     class="footer-link"
                     aria-label="التواصل عبر البريد الإلكتروني"
                 >
-
                     <span class="footer-icon">
                         <i class="fa-solid fa-envelope"></i>
                     </span>
@@ -426,7 +416,6 @@
                     <span>
                         kilixservice@gmail.com
                     </span>
-
                 </a>
 
             </div>
@@ -434,7 +423,7 @@
         </div>
 
 
-        <!-- Footer Bottom -->
+        <!-- FOOTER BOTTOM -->
         <div class="footer-bottom">
 
             <div class="container">
@@ -451,9 +440,101 @@
 
 
     <!-- =========================================
-         JAVASCRIPT
+         MENU JAVASCRIPT
+         يعمل مباشرة من نفس الصفحة
     ========================================== -->
 
+    <script>
+
+        function toggleKilixMenu(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const wrapper =
+                document.querySelector(".menu-wrapper");
+
+            const button =
+                document.getElementById("menuToggle");
+
+            if (!wrapper || !button) {
+                return;
+            }
+
+            const isOpen =
+                wrapper.classList.toggle("open");
+
+            button.classList.toggle(
+                "active",
+                isOpen
+            );
+
+            button.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+        }
+
+
+        function closeKilixMenu() {
+
+            const wrapper =
+                document.querySelector(".menu-wrapper");
+
+            const button =
+                document.getElementById("menuToggle");
+
+            if (!wrapper || !button) {
+                return;
+            }
+
+            wrapper.classList.remove("open");
+
+            button.classList.remove("active");
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+
+
+        /* إغلاق القائمة عند الضغط خارجها */
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const wrapper =
+                    document.querySelector(".menu-wrapper");
+
+                if (!wrapper) {
+                    return;
+                }
+
+                if (!wrapper.contains(event.target)) {
+                    closeKilixMenu();
+                }
+
+            }
+        );
+
+
+        /* إغلاق القائمة بزر ESC */
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+                    closeKilixMenu();
+                }
+
+            }
+        );
+
+    </script>
+
+
+    <!-- JAVASCRIPT FILE -->
     <script src="script.js"></script>
 
 </body>
