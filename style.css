@@ -462,4 +462,1275 @@ img {
 .hero-title {
     display: flex;
 
-   
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    color:
+        var(--navy);
+
+    font-size:
+        clamp(3.2rem, 5vw, 4.65rem);
+
+    font-weight:
+        900;
+
+    line-height:
+        1.08;
+
+    letter-spacing:
+        -1.8px;
+
+    margin-bottom:
+        8px;
+}
+
+.title-line {
+    display: block;
+}
+
+.title-line-dark {
+    color: var(--navy);
+}
+
+.hero-title .highlight {
+    color:
+        var(--orange);
+}
+
+
+/* Decorative underline */
+
+.title-underline {
+    width: 160px;
+
+    height: 13px;
+
+    margin:
+        0 0 23px 5px;
+
+    border-bottom:
+        5px solid var(--orange);
+
+    border-radius:
+        50%;
+
+    transform:
+        rotate(-3deg);
+
+    opacity:
+        0.9;
+}
+
+
+/* Description */
+
+.hero-description {
+    max-width:
+        535px;
+
+    margin-bottom:
+        30px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        1.12rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.85;
+}
+
+
+/* =========================================================
+   06. CTA BUTTONS
+   ========================================================= */
+
+.cta-buttons {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        12px;
+
+    width:
+        min(100%, 390px);
+
+    margin-bottom:
+        14px;
+}
+
+.btn {
+    min-height:
+        58px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    padding:
+        13px 23px;
+
+    border-radius:
+        var(--radius-pill);
+
+    font-size:
+        1rem;
+
+    font-weight:
+        800;
+
+    border:
+        1px solid transparent;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+
+/* Android */
+
+.btn-primary {
+    color:
+        var(--white);
+
+    background:
+        var(--orange);
+
+    box-shadow:
+        var(--shadow-button);
+}
+
+.btn-primary:hover {
+    background:
+        var(--orange-dark);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 16px 32px rgba(255, 101, 0, 0.28);
+}
+
+.btn-primary .fa-android {
+    font-size:
+        1.3rem;
+}
+
+.btn-arrow {
+    margin-right:
+        auto;
+
+    font-size:
+        0.85rem;
+}
+
+
+/* App Store */
+
+.btn-secondary {
+    color:
+        var(--navy);
+
+    background:
+        var(--white);
+
+    border-color:
+        rgba(24, 55, 92, 0.15);
+
+    box-shadow:
+        var(--shadow-soft);
+}
+
+.btn-secondary:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(24, 55, 92, 0.22);
+
+    box-shadow:
+        0 15px 30px rgba(24, 55, 92, 0.10);
+}
+
+.btn-secondary .fa-apple {
+    font-size:
+        1.3rem;
+}
+
+
+/* Platform */
+
+.platform-availability {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    padding-right:
+        4px;
+
+    font-size:
+        0.86rem;
+
+    font-weight:
+        700;
+
+    color:
+        var(--navy);
+}
+
+.platform-availability .divider {
+    color:
+        #ccd4dd;
+}
+
+.platform-availability .muted {
+    color:
+        #8995a3;
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   07. PHONE
+   ========================================================= */
+
+.hero-image {
+    direction:
+        ltr;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    position:
+        relative;
+
+    min-height:
+        600px;
+}
+
+
+/* Orange glow */
+
+.hero-image::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        470px;
+
+    height:
+        470px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 101, 0, 0.075);
+
+    filter:
+        blur(3px);
+
+    z-index:
+        -1;
+}
+
+
+/* Phone */
+
+.phone-wrapper {
+    position:
+        relative;
+
+    width:
+        min(100%, 430px);
+
+    transform:
+        translate3d(
+            var(--parallax-x, 0px),
+            var(--parallax-y, 0px),
+            0
+        )
+        rotate(1.5deg);
+
+    transition:
+        transform 0.18s ease-out;
+}
+
+
+/* Shadow */
+
+.phone-wrapper::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        10%;
+
+    right:
+        10%;
+
+    bottom:
+        -28px;
+
+    height:
+        40px;
+
+    background:
+        rgba(24, 55, 92, 0.18);
+
+    filter:
+        blur(25px);
+
+    border-radius:
+        50%;
+
+    z-index:
+        -1;
+}
+
+
+/* Screenshot */
+
+.phone-img {
+    width:
+        100%;
+
+    border-radius:
+        40px;
+
+    border:
+        7px solid #151a22;
+
+    box-shadow:
+        var(--shadow-phone);
+
+    background:
+        #151a22;
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+/* =========================================================
+   08. FEATURES
+   ========================================================= */
+
+.features {
+    position:
+        relative;
+
+    padding:
+        25px 0 70px;
+}
+
+.features-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top:
+        1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.feature-card {
+    position:
+        relative;
+
+    padding:
+        25px 16px;
+
+    text-align:
+        center;
+
+    transition:
+        transform var(--transition);
+}
+
+.feature-card:not(:last-child)::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        25%;
+
+    width:
+        1px;
+
+    height:
+        50%;
+
+    background:
+        var(--border);
+}
+
+.feature-card:hover {
+    transform:
+        translateY(-4px);
+}
+
+
+/* Icon */
+
+.icon-wrapper {
+    width:
+        58px;
+
+    height:
+        58px;
+
+    margin:
+        0 auto 12px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--orange-soft);
+
+    color:
+        var(--orange);
+
+    font-size:
+        1.35rem;
+
+    transition:
+        transform var(--transition),
+        background var(--transition);
+}
+
+.feature-card:hover .icon-wrapper {
+    transform:
+        scale(1.08);
+
+    background:
+        #ffe6d6;
+}
+
+.feature-card h3 {
+    color:
+        var(--navy);
+
+    font-size:
+        0.94rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   09. BOTTOM DECORATION
+   ========================================================= */
+
+.bottom-decoration {
+    position:
+        relative;
+
+    height:
+        100px;
+
+    overflow:
+        hidden;
+
+    margin-top:
+        10px;
+}
+
+.bottom-orange {
+    position:
+        absolute;
+
+    width:
+        70%;
+
+    height:
+        150px;
+
+    right:
+        -10%;
+
+    bottom:
+        -105px;
+
+    background:
+        var(--orange);
+
+    border-radius:
+        50% 50% 0 0;
+
+    transform:
+        rotate(-4deg);
+
+    opacity:
+        0.95;
+}
+
+.bottom-blue {
+    position:
+        absolute;
+
+    width:
+        65%;
+
+    height:
+        145px;
+
+    left:
+        -10%;
+
+    bottom:
+        -110px;
+
+    background:
+        var(--navy);
+
+    border-radius:
+        50% 50% 0 0;
+
+    transform:
+        rotate(5deg);
+
+    opacity:
+        0.98;
+}
+
+
+/* =========================================================
+   10. SCROLL REVEAL
+   ========================================================= */
+
+.reveal-element {
+    opacity:
+        0;
+
+    transform:
+        translateY(22px);
+
+    transition:
+        opacity 0.65s cubic-bezier(.16,1,.3,1),
+        transform 0.65s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal-element.is-visible {
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   11. TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    .hero {
+        padding:
+            45px 0 30px;
+
+        min-height:
+            auto;
+    }
+
+    .hero-container {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            35px;
+
+        text-align:
+            center;
+    }
+
+    .hero-content {
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        max-width:
+            700px;
+
+        margin-inline:
+            auto;
+    }
+
+    .hero-title {
+        align-items:
+            center;
+    }
+
+    .badge {
+        margin-bottom:
+            18px;
+    }
+
+    .hero-description {
+        margin-inline:
+            auto;
+    }
+
+    .title-underline {
+        margin-inline:
+            auto;
+
+        margin-bottom:
+            20px;
+    }
+
+    .cta-buttons {
+        margin-inline:
+            auto;
+    }
+
+    .platform-availability {
+        justify-content:
+            center;
+    }
+
+    .hero-image {
+        min-height:
+            520px;
+    }
+
+    .phone-wrapper {
+        width:
+            min(70vw, 400px);
+    }
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .feature-card:nth-child(2)::after {
+        display:
+            none;
+    }
+}
+
+
+/* =========================================================
+   12. MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        width:
+            calc(100% - 28px);
+    }
+
+
+    /* Navbar */
+
+    .nav-container {
+        min-height:
+            70px;
+    }
+
+    .logo {
+        font-size:
+            2.05rem;
+    }
+
+    .menu-toggle {
+        width:
+            44px;
+
+        height:
+            44px;
+    }
+
+    .menu-toggle span {
+        width:
+            27px;
+
+        height:
+            3px;
+    }
+
+    .btn-download-nav {
+        display:
+            inline-flex;
+
+        min-width:
+            auto;
+
+        padding:
+            9px 15px;
+
+        gap:
+            7px;
+
+        font-size:
+            0.78rem;
+    }
+
+    .btn-download-nav i {
+        font-size:
+            0.82rem;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding:
+            34px 0 25px;
+
+        min-height:
+            auto;
+    }
+
+    .hero-container {
+        gap:
+            25px;
+    }
+
+
+    /* Badge */
+
+    .badge {
+        max-width:
+            100%;
+
+        padding:
+            8px 13px;
+
+        margin-bottom:
+            17px;
+
+        font-size:
+            0.78rem;
+
+        white-space:
+            nowrap;
+    }
+
+
+    /* Heading */
+
+    .hero-title {
+        width:
+            100%;
+
+        font-size:
+            clamp(2.45rem, 11vw, 3.45rem);
+
+        line-height:
+            1.10;
+
+        letter-spacing:
+            -1px;
+    }
+
+    .title-line {
+        width:
+            100%;
+    }
+
+
+    /* Underline */
+
+    .title-underline {
+        width:
+            135px;
+
+        height:
+            11px;
+
+        margin-top:
+            1px;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    /* Description */
+
+    .hero-description {
+        width:
+            100%;
+
+        max-width:
+            520px;
+
+        margin-bottom:
+            27px;
+
+        font-size:
+            0.98rem;
+
+        line-height:
+            1.75;
+    }
+
+
+    /* CTA */
+
+    .cta-buttons {
+        width:
+            min(100%, 360px);
+
+        gap:
+            10px;
+    }
+
+    .btn {
+        min-height:
+            55px;
+
+        padding:
+            12px 20px;
+
+        font-size:
+            0.95rem;
+    }
+
+
+    /* Platform */
+
+    .platform-availability {
+        font-size:
+            0.79rem;
+
+        gap:
+            8px;
+    }
+
+
+    /* Phone */
+
+    .hero-image {
+        min-height:
+            auto;
+
+        padding:
+            8px 0 20px;
+    }
+
+    .hero-image::before {
+        width:
+            310px;
+
+        height:
+            310px;
+    }
+
+    .phone-wrapper {
+        width:
+            min(82vw, 360px);
+
+        transform:
+            rotate(1deg);
+    }
+
+    .phone-img {
+        border-radius:
+            34px;
+
+        border-width:
+            6px;
+    }
+
+
+    /* Features */
+
+    .features {
+        padding:
+            15px 0 50px;
+    }
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        border-bottom:
+            0;
+    }
+
+    .feature-card {
+        min-height:
+            145px;
+
+        padding:
+            20px 8px;
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+    .feature-card:nth-child(odd)::after {
+        display:
+            block;
+    }
+
+    .feature-card:nth-child(even)::after {
+        display:
+            none;
+    }
+
+    .icon-wrapper {
+        width:
+            52px;
+
+        height:
+            52px;
+
+        font-size:
+            1.2rem;
+    }
+
+    .feature-card h3 {
+        font-size:
+            0.82rem;
+    }
+
+
+    /* Bottom */
+
+    .bottom-decoration {
+        height:
+            65px;
+    }
+}
+
+
+/* =========================================================
+   13. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width:
+            calc(100% - 24px);
+    }
+
+
+    /* Navbar */
+
+    .nav-container {
+        min-height:
+            66px;
+    }
+
+    .logo {
+        font-size:
+            1.9rem;
+    }
+
+    .menu-toggle {
+        width:
+            42px;
+
+        height:
+            42px;
+
+        padding:
+            7px;
+    }
+
+    .menu-toggle span {
+        width:
+            25px;
+
+        height:
+            2.8px;
+    }
+
+    .btn-download-nav {
+        padding:
+            8px 12px;
+
+        font-size:
+            0.72rem;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding:
+            28px 0 20px;
+    }
+
+    .hero-container {
+        gap:
+            22px;
+    }
+
+
+    /* Badge */
+
+    .badge {
+        font-size:
+            0.72rem;
+
+        padding:
+            7px 11px;
+
+        gap:
+            6px;
+    }
+
+
+    /* Heading */
+
+    .hero-title {
+        font-size:
+            2.55rem;
+
+        line-height:
+            1.08;
+    }
+
+
+    /* Description */
+
+    .hero-description {
+        font-size:
+            0.91rem;
+
+        line-height:
+            1.75;
+
+        max-width:
+            350px;
+    }
+
+
+    /* Buttons */
+
+    .cta-buttons {
+        width:
+            100%;
+    }
+
+    .btn {
+        min-height:
+            53px;
+
+        font-size:
+            0.92rem;
+    }
+
+
+    /* Phone */
+
+    .hero-image {
+        padding:
+            5px 0 15px;
+    }
+
+    .phone-wrapper {
+        width:
+            min(84vw, 325px);
+    }
+
+    .phone-img {
+        border-radius:
+            31px;
+
+        border-width:
+            5px;
+    }
+
+
+    /* Features */
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .feature-card {
+        min-height:
+            140px;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+    }
+
+    .feature-card h3 {
+        font-size:
+            0.77rem;
+
+        line-height:
+            1.5;
+    }
+
+
+    /* Decorations */
+
+    .orange-line-1 {
+        right:
+            3%;
+
+        top:
+            100px;
+    }
+
+    .orange-line-2 {
+        right:
+            1%;
+
+        top:
+            120px;
+    }
+}
+
+
+/* =========================================================
+   14. VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .logo {
+        font-size:
+            1.72rem;
+    }
+
+    .btn-download-nav {
+        padding:
+            7px 9px;
+
+        font-size:
+            0.67rem;
+    }
+
+    .hero-title {
+        font-size:
+            2.3rem;
+    }
+
+    .badge {
+        font-size:
+            0.66rem;
+    }
+
+    .phone-wrapper {
+        width:
+            88vw;
+    }
+
+    .platform-availability {
+        font-size:
+            0.72rem;
+    }
+}
+
+
+/* =========================================================
+   15. ACCESSIBILITY
+   ========================================================= */
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation:
+        none !important;
+
+    transition:
+        none !important;
+
+    scroll-behavior:
+        auto !important;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
