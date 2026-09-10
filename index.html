@@ -45,6 +45,7 @@
 
         <div class="container nav-container">
 
+            <!-- Menu -->
             <button
                 class="menu-toggle"
                 id="menuToggle"
@@ -58,6 +59,7 @@
             </button>
 
 
+            <!-- Logo -->
             <a
                 href="#"
                 class="logo"
@@ -67,13 +69,58 @@
             </a>
 
 
-            <a
-                href="#download"
-                class="btn-download-nav"
-            >
-                <i class="fa-solid fa-download"></i>
-                <span>حمّل التطبيق</span>
-            </a>
+            <!-- Download Menu -->
+            <div class="nav-download-menu">
+
+                <button
+                    class="btn-download-nav"
+                    id="downloadMenuToggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                >
+                    <i class="fa-solid fa-download"></i>
+
+                    <span>
+                        حمّل التطبيق
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down menu-arrow"></i>
+                </button>
+
+
+                <!-- Dropdown -->
+                <div
+                    class="download-dropdown"
+                    id="downloadDropdown"
+                >
+
+                    <!-- Contact -->
+                    <a href="#contact">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                        <span>
+                            تواصل معنا
+                        </span>
+
+                    </a>
+
+
+                    <!-- Download -->
+                    <a href="#download">
+
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+
+                        <span>
+                            تحميل التطبيق
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -96,15 +143,19 @@
 
                 <div class="hero-content">
 
+                    <!-- Badge -->
                     <div class="badge">
+
                         <i class="fa-solid fa-location-dot"></i>
 
                         <span>
                             منصة التجارة بالجملة في الجزائر
                         </span>
+
                     </div>
 
 
+                    <!-- Title -->
                     <h1 class="hero-title">
 
                         <span class="title-line title-line-dark">
@@ -118,12 +169,14 @@
                     </h1>
 
 
+                    <!-- Underline -->
                     <div
                         class="title-underline"
                         aria-hidden="true"
                     ></div>
 
 
+                    <!-- Description -->
                     <p class="hero-description">
                         اكتشف المنتجات، قارن أسعار الجملة،
                         تعرّف على الموردين واطلب مباشرة
@@ -131,15 +184,18 @@
                     </p>
 
 
+                    <!-- CTA -->
                     <div
                         class="cta-buttons"
                         id="download"
                     >
 
+                        <!-- Android -->
                         <a
                             href="#"
                             class="btn btn-primary"
                         >
+
                             <i class="fa-brands fa-android"></i>
 
                             <span>
@@ -147,23 +203,28 @@
                             </span>
 
                             <i class="fa-solid fa-arrow-left btn-arrow"></i>
+
                         </a>
 
 
+                        <!-- iOS -->
                         <a
                             href="#"
                             class="btn btn-secondary"
                         >
+
                             <i class="fa-brands fa-apple"></i>
 
                             <span>
                                 App Store
                             </span>
+
                         </a>
 
                     </div>
 
 
+                    <!-- Availability -->
                     <div class="platform-availability">
 
                         <span>
@@ -198,7 +259,7 @@
                 <div class="features-grid">
 
 
-                    <!-- 1 -->
+                    <!-- Feature 1 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -213,7 +274,7 @@
                     </article>
 
 
-                    <!-- 2 -->
+                    <!-- Feature 2 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -228,7 +289,7 @@
                     </article>
 
 
-                    <!-- 3 -->
+                    <!-- Feature 3 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -243,7 +304,7 @@
                     </article>
 
 
-                    <!-- 4 -->
+                    <!-- Feature 4 -->
                     <article class="feature-card">
 
                         <div class="icon-wrapper">
@@ -283,10 +344,14 @@
          FOOTER / CONTACT
     ========================================== -->
 
-    <footer class="site-footer">
+    <footer
+        class="site-footer"
+        id="contact"
+    >
 
         <div class="container footer-container">
 
+            <!-- Footer Brand -->
             <div class="footer-brand">
 
                 <a
@@ -304,6 +369,7 @@
             </div>
 
 
+            <!-- Contact Links -->
             <div class="footer-contact">
 
                 <!-- Facebook -->
@@ -314,6 +380,7 @@
                     class="footer-link"
                     aria-label="Kilix على Facebook"
                 >
+
                     <span class="footer-icon">
                         <i class="fa-brands fa-facebook-f"></i>
                     </span>
@@ -321,6 +388,7 @@
                     <span>
                         Facebook
                     </span>
+
                 </a>
 
 
@@ -332,6 +400,7 @@
                     class="footer-link"
                     aria-label="Kilix على Instagram"
                 >
+
                     <span class="footer-icon">
                         <i class="fa-brands fa-instagram"></i>
                     </span>
@@ -339,6 +408,7 @@
                     <span>
                         Instagram
                     </span>
+
                 </a>
 
 
@@ -348,6 +418,7 @@
                     class="footer-link"
                     aria-label="التواصل مع Kilix عبر البريد الإلكتروني"
                 >
+
                     <span class="footer-icon">
                         <i class="fa-solid fa-envelope"></i>
                     </span>
@@ -355,6 +426,7 @@
                     <span>
                         kilixservice@gmail.com
                     </span>
+
                 </a>
 
             </div>
@@ -363,7 +435,6 @@
 
 
         <!-- Footer Bottom -->
-
         <div class="footer-bottom">
 
             <div class="container">
