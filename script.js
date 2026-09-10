@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.classList.toggle('active', isOpen);
         overlay.classList.toggle('active', isOpen);
         
-        // دعم التوافق مع قارئات الشاشة
+        // دعم التوافق مع قارئات الشاشة ومنع التمرير أثناء فتح القائمة
         menuToggle.setAttribute('aria-expanded', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : ''; // منع التمرير أثناء فتح القائمة
+        document.body.style.overflow = isOpen ? 'hidden' : ''; 
     };
 
     if (menuToggle && navContainer) {
@@ -93,25 +93,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 4. تأثير Parallax الخفيف على حاوية صور الهاتف (فقط للشاشات الكبيرة)
+    // 4. تأثير Parallax الخفيف والمحسّن أداءً على صور الهاتف
     // -------------------------------------------------------------
     const phoneWrappers = document.querySelectorAll('.phone-wrapper');
-    
-    window.addEventListener('mousemove', (e) => {
-        // تشغيل التأثير فقط إذا كان عرض الشاشة أكبر من 992px لمنع التقطيع في الهواتف
-        if (window.innerWidth > 992) {
-            const { clientX, clientY } = e;
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            const moveX = (clientX - centerX) / 60;
-            const moveY = (clientY - centerY) / 60;
+    let ticking = false;
 
+    window.addEventListener('mousemove', (e) => {
+        // تشغيل التأثير فقط للشاشات الأكبر من 992px
+        if (window.innerWidth > 992 && !ticking) {
+            window.requestAnimationFrame(() => {
+                const { clientX, clientY } = e;
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                
+                const moveX = (clientX - centerX) / 60;
+                const moveY = (clientY - centerY) / 60;
+
+                phoneWrappers.forEach(wrapper => {
+                    wrapper.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+                });
+
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+
+    // إعادة الهاتف لمكانه الأصلي بنعومة عند خروج الماوس من النافذة
+    document.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 992) {
             phoneWrappers.forEach(wrapper => {
-                wrapper.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+                wrapper.style.transform = `translate3d(0, 0, 0)`;
             });
         }
     });
 
 });
-                              
+                        
