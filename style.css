@@ -1,7 +1,7 @@
 /* =========================================================
    KILIX — LANDING PAGE
    Navy + Orange + Off White
-   Arabic RTL / Responsive
+   Arabic RTL / Fully Responsive
    ========================================================= */
 
 
@@ -76,6 +76,9 @@ body {
     overflow-x: hidden;
 
     line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 body,
@@ -205,11 +208,8 @@ img {
     border-bottom:
         1px solid rgba(24, 55, 92, 0.06);
 
-    backdrop-filter:
-        blur(16px);
-
-    -webkit-backdrop-filter:
-        blur(16px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .nav-container {
@@ -331,25 +331,19 @@ img {
 
     gap: 9px;
 
-    padding:
-        12px 22px;
+    padding: 12px 22px;
 
     min-width: 150px;
 
-    border-radius:
-        var(--radius-pill);
+    border-radius: var(--radius-pill);
 
-    background:
-        var(--orange);
+    background: var(--orange);
 
-    color:
-        var(--white);
+    color: var(--white);
 
-    font-size:
-        0.95rem;
+    font-size: 0.95rem;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
     box-shadow:
         0 8px 20px rgba(255, 101, 0, 0.18);
@@ -361,11 +355,9 @@ img {
 }
 
 .btn-download-nav:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
-    background:
-        var(--orange-dark);
+    background: var(--orange-dark);
 
     box-shadow:
         0 12px 25px rgba(255, 101, 0, 0.25);
@@ -373,7 +365,7 @@ img {
 
 
 /* =========================================================
-   05. HERO
+   05. HERO — DESKTOP
    ========================================================= */
 
 .hero {
@@ -415,6 +407,8 @@ img {
     z-index: 5;
 
     max-width: 610px;
+
+    width: 100%;
 }
 
 
@@ -429,31 +423,23 @@ img {
 
     gap: 9px;
 
-    padding:
-        9px 17px;
+    padding: 9px 17px;
 
-    margin-bottom:
-        22px;
+    margin-bottom: 22px;
 
-    border-radius:
-        var(--radius-pill);
+    border-radius: var(--radius-pill);
 
-    background:
-        var(--orange-soft);
+    background: var(--orange-soft);
 
-    color:
-        var(--orange);
+    color: var(--orange);
 
-    font-size:
-        0.9rem;
+    font-size: 0.9rem;
 
-    font-weight:
-        800;
+    font-weight: 800;
 }
 
 .badge i {
-    font-size:
-        0.95rem;
+    font-size: 0.95rem;
 }
 
 
@@ -466,27 +452,23 @@ img {
 
     align-items: flex-start;
 
-    color:
-        var(--navy);
+    color: var(--navy);
 
     font-size:
         clamp(3.2rem, 5vw, 4.65rem);
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    line-height:
-        1.08;
+    line-height: 1.08;
 
-    letter-spacing:
-        -1.8px;
+    letter-spacing: -1.8px;
 
-    margin-bottom:
-        8px;
+    margin-bottom: 8px;
 }
 
 .title-line {
     display: block;
+    width: 100%;
 }
 
 .title-line-dark {
@@ -494,12 +476,11 @@ img {
 }
 
 .hero-title .highlight {
-    color:
-        var(--orange);
+    color: var(--orange);
 }
 
 
-/* Decorative underline */
+/* Underline */
 
 .title-underline {
     width: 160px;
@@ -512,91 +493,67 @@ img {
     border-bottom:
         5px solid var(--orange);
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    transform:
-        rotate(-3deg);
+    transform: rotate(-3deg);
 
-    opacity:
-        0.9;
+    opacity: 0.9;
 }
 
 
 /* Description */
 
 .hero-description {
-    max-width:
-        535px;
+    max-width: 535px;
 
-    margin-bottom:
-        30px;
+    margin-bottom: 30px;
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        1.12rem;
+    font-size: 1.12rem;
 
-    font-weight:
-        500;
+    font-weight: 500;
 
-    line-height:
-        1.85;
+    line-height: 1.85;
 }
 
 
 /* =========================================================
-   06. CTA BUTTONS
+   06. CTA
    ========================================================= */
 
 .cta-buttons {
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    gap:
-        12px;
+    gap: 12px;
 
-    width:
-        min(100%, 390px);
+    width: min(100%, 390px);
 
-    margin-bottom:
-        14px;
+    margin-bottom: 14px;
 }
 
 .btn {
-    min-height:
-        58px;
+    min-height: 58px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    gap:
-        12px;
+    gap: 12px;
 
-    padding:
-        13px 23px;
+    padding: 13px 23px;
 
-    border-radius:
-        var(--radius-pill);
+    border-radius: var(--radius-pill);
 
-    font-size:
-        1rem;
+    font-size: 1rem;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    border:
-        1px solid transparent;
+    border: 1px solid transparent;
 
     transition:
         transform var(--transition),
@@ -605,63 +562,51 @@ img {
 }
 
 
-/* Android */
+/* Primary */
 
 .btn-primary {
-    color:
-        var(--white);
+    color: var(--white);
 
-    background:
-        var(--orange);
+    background: var(--orange);
 
-    box-shadow:
-        var(--shadow-button);
+    box-shadow: var(--shadow-button);
 }
 
 .btn-primary:hover {
-    background:
-        var(--orange-dark);
+    background: var(--orange-dark);
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     box-shadow:
         0 16px 32px rgba(255, 101, 0, 0.28);
 }
 
 .btn-primary .fa-android {
-    font-size:
-        1.3rem;
+    font-size: 1.3rem;
 }
 
 .btn-arrow {
-    margin-right:
-        auto;
+    margin-right: auto;
 
-    font-size:
-        0.85rem;
+    font-size: 0.85rem;
 }
 
 
-/* App Store */
+/* Secondary */
 
 .btn-secondary {
-    color:
-        var(--navy);
+    color: var(--navy);
 
-    background:
-        var(--white);
+    background: var(--white);
 
     border-color:
         rgba(24, 55, 92, 0.15);
 
-    box-shadow:
-        var(--shadow-soft);
+    box-shadow: var(--shadow-soft);
 }
 
 .btn-secondary:hover {
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     border-color:
         rgba(24, 55, 92, 0.22);
@@ -671,47 +616,36 @@ img {
 }
 
 .btn-secondary .fa-apple {
-    font-size:
-        1.3rem;
+    font-size: 1.3rem;
 }
 
 
 /* Platform */
 
 .platform-availability {
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        10px;
+    gap: 10px;
 
-    padding-right:
-        4px;
+    padding-right: 4px;
 
-    font-size:
-        0.86rem;
+    font-size: 0.86rem;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
-    color:
-        var(--navy);
+    color: var(--navy);
 }
 
 .platform-availability .divider {
-    color:
-        #ccd4dd;
+    color: #ccd4dd;
 }
 
 .platform-availability .muted {
-    color:
-        #8995a3;
+    color: #8995a3;
 
-    font-weight:
-        500;
+    font-weight: 500;
 }
 
 
@@ -720,63 +654,48 @@ img {
    ========================================================= */
 
 .hero-image {
-    direction:
-        ltr;
+    direction: ltr;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    position:
-        relative;
+    position: relative;
 
-    min-height:
-        600px;
+    min-height: 600px;
+
+    width: 100%;
 }
 
-
-/* Orange glow */
-
 .hero-image::before {
-    content:
-        "";
+    content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
-    width:
-        470px;
+    width: 470px;
+    height: 470px;
 
-    height:
-        470px;
+    max-width: 90%;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         rgba(255, 101, 0, 0.075);
 
-    filter:
-        blur(3px);
+    filter: blur(3px);
 
-    z-index:
-        -1;
+    z-index: -1;
 }
 
 
 /* Phone */
 
 .phone-wrapper {
-    position:
-        relative;
+    position: relative;
 
-    width:
-        min(100%, 430px);
+    width: min(100%, 430px);
 
     transform:
         translate3d(
@@ -790,62 +709,38 @@ img {
         transform 0.18s ease-out;
 }
 
-
-/* Shadow */
-
 .phone-wrapper::after {
-    content:
-        "";
+    content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
-    left:
-        10%;
+    left: 10%;
+    right: 10%;
 
-    right:
-        10%;
+    bottom: -28px;
 
-    bottom:
-        -28px;
-
-    height:
-        40px;
+    height: 40px;
 
     background:
         rgba(24, 55, 92, 0.18);
 
-    filter:
-        blur(25px);
+    filter: blur(25px);
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    z-index:
-        -1;
+    z-index: -1;
 }
 
-
-/* Screenshot */
-
 .phone-img {
-    width:
-        100%;
+    width: 100%;
 
-    border-radius:
-        40px;
+    border-radius: 40px;
 
-    border:
-        7px solid #151a22;
+    border: 7px solid #151a22;
 
-    box-shadow:
-        var(--shadow-phone);
+    box-shadow: var(--shadow-phone);
 
-    background:
-        #151a22;
-
-    transition:
-        transform 0.35s ease;
+    background: #151a22;
 }
 
 
@@ -854,16 +749,14 @@ img {
    ========================================================= */
 
 .features {
-    position:
-        relative;
+    position: relative;
 
     padding:
         25px 0 70px;
 }
 
 .features-grid {
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
@@ -876,80 +769,59 @@ img {
 }
 
 .feature-card {
-    position:
-        relative;
+    position: relative;
 
     padding:
         25px 16px;
 
-    text-align:
-        center;
+    text-align: center;
 
     transition:
         transform var(--transition);
 }
 
 .feature-card:not(:last-child)::after {
-    content:
-        "";
+    content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
-    left:
-        0;
+    left: 0;
 
-    top:
-        25%;
+    top: 25%;
 
-    width:
-        1px;
+    width: 1px;
 
-    height:
-        50%;
+    height: 50%;
 
-    background:
-        var(--border);
+    background: var(--border);
 }
 
 .feature-card:hover {
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
 
 /* Icon */
 
 .icon-wrapper {
-    width:
-        58px;
-
-    height:
-        58px;
+    width: 58px;
+    height: 58px;
 
     margin:
         0 auto 12px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    border-radius: 50%;
 
-    border-radius:
-        50%;
+    background: var(--orange-soft);
 
-    background:
-        var(--orange-soft);
+    color: var(--orange);
 
-    color:
-        var(--orange);
-
-    font-size:
-        1.35rem;
+    font-size: 1.35rem;
 
     transition:
         transform var(--transition),
@@ -957,25 +829,19 @@ img {
 }
 
 .feature-card:hover .icon-wrapper {
-    transform:
-        scale(1.08);
+    transform: scale(1.08);
 
-    background:
-        #ffe6d6;
+    background: #ffe6d6;
 }
 
 .feature-card h3 {
-    color:
-        var(--navy);
+    color: var(--navy);
 
-    font-size:
-        0.94rem;
+    font-size: 0.94rem;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    line-height:
-        1.55;
+    line-height: 1.55;
 }
 
 
@@ -984,75 +850,51 @@ img {
    ========================================================= */
 
 .bottom-decoration {
-    position:
-        relative;
+    position: relative;
 
-    height:
-        100px;
+    height: 100px;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    margin-top:
-        10px;
+    margin-top: 10px;
 }
 
 .bottom-orange {
-    position:
-        absolute;
+    position: absolute;
 
-    width:
-        70%;
+    width: 70%;
+    height: 150px;
 
-    height:
-        150px;
+    right: -10%;
+    bottom: -105px;
 
-    right:
-        -10%;
-
-    bottom:
-        -105px;
-
-    background:
-        var(--orange);
+    background: var(--orange);
 
     border-radius:
         50% 50% 0 0;
 
-    transform:
-        rotate(-4deg);
+    transform: rotate(-4deg);
 
-    opacity:
-        0.95;
+    opacity: 0.95;
 }
 
 .bottom-blue {
-    position:
-        absolute;
+    position: absolute;
 
-    width:
-        65%;
+    width: 65%;
+    height: 145px;
 
-    height:
-        145px;
+    left: -10%;
+    bottom: -110px;
 
-    left:
-        -10%;
-
-    bottom:
-        -110px;
-
-    background:
-        var(--navy);
+    background: var(--navy);
 
     border-radius:
         50% 50% 0 0;
 
-    transform:
-        rotate(5deg);
+    transform: rotate(5deg);
 
-    opacity:
-        0.98;
+    opacity: 0.98;
 }
 
 
@@ -1061,8 +903,7 @@ img {
    ========================================================= */
 
 .reveal-element {
-    opacity:
-        0;
+    opacity: 0;
 
     transform:
         translateY(22px);
@@ -1073,8 +914,7 @@ img {
 }
 
 .reveal-element.is-visible {
-    opacity:
-        1;
+    opacity: 1;
 
     transform:
         translateY(0);
@@ -1082,98 +922,115 @@ img {
 
 
 /* =========================================================
-   11. TABLET
+   11. TABLET / SMALL LAPTOP
+   IMPORTANT: 1100px
    ========================================================= */
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
 
+    .container {
+        width:
+            min(
+                calc(100% - 32px),
+                900px
+            );
+    }
+
+    /* Hero becomes ONE column */
     .hero {
         padding:
-            45px 0 30px;
+            42px 0 30px;
 
-        min-height:
-            auto;
+        min-height: auto;
     }
 
     .hero-container {
-        grid-template-columns:
-            1fr;
+        display: flex;
 
-        gap:
-            35px;
+        flex-direction: column;
 
-        text-align:
-            center;
+        gap: 32px;
+
+        width: 100%;
+
+        text-align: center;
+
+        direction: rtl;
     }
 
     .hero-content {
-        display:
-            flex;
+        width: 100%;
 
-        flex-direction:
-            column;
+        max-width: 700px;
 
-        align-items:
-            center;
+        display: flex;
 
-        max-width:
-            700px;
+        flex-direction: column;
 
-        margin-inline:
-            auto;
+        align-items: center;
+
+        margin-inline: auto;
+
+        text-align: center;
     }
 
     .hero-title {
-        align-items:
-            center;
+        align-items: center;
+
+        text-align: center;
+
+        width: 100%;
     }
 
-    .badge {
-        margin-bottom:
-            18px;
-    }
+    .title-line {
+        width: 100%;
 
-    .hero-description {
-        margin-inline:
-            auto;
+        text-align: center;
     }
 
     .title-underline {
-        margin-inline:
-            auto;
+        margin:
+            2px auto 20px;
+    }
 
-        margin-bottom:
-            20px;
+    .hero-description {
+        margin-inline: auto;
     }
 
     .cta-buttons {
-        margin-inline:
-            auto;
+        margin-inline: auto;
     }
 
     .platform-availability {
-        justify-content:
-            center;
+        justify-content: center;
     }
 
+    /* Phone */
     .hero-image {
-        min-height:
-            520px;
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            10px 0 30px;
     }
 
     .phone-wrapper {
         width:
-            min(70vw, 400px);
+            min(
+                72vw,
+                400px
+            );
     }
 
+    /* Features */
     .features-grid {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
     .feature-card:nth-child(2)::after {
-        display:
-            none;
+        display: none;
     }
 }
 
@@ -1190,11 +1047,12 @@ img {
     }
 
 
-    /* Navbar */
+    /* =====================
+       NAVBAR
+       ===================== */
 
     .nav-container {
-        min-height:
-            70px;
+        min-height: 70px;
     }
 
     .logo {
@@ -1203,33 +1061,26 @@ img {
     }
 
     .menu-toggle {
-        width:
-            44px;
+        width: 44px;
+        height: 44px;
 
-        height:
-            44px;
+        padding: 7px;
     }
 
     .menu-toggle span {
-        width:
-            27px;
-
-        height:
-            3px;
+        width: 27px;
+        height: 3px;
     }
 
     .btn-download-nav {
-        display:
-            inline-flex;
+        display: inline-flex;
 
-        min-width:
-            auto;
+        min-width: auto;
 
         padding:
             9px 15px;
 
-        gap:
-            7px;
+        gap: 7px;
 
         font-size:
             0.78rem;
@@ -1241,14 +1092,13 @@ img {
     }
 
 
-    /* Hero */
+    /* =====================
+       HERO
+       ===================== */
 
     .hero {
         padding:
-            34px 0 25px;
-
-        min-height:
-            auto;
+            30px 0 20px;
     }
 
     .hero-container {
@@ -1257,11 +1107,12 @@ img {
     }
 
 
-    /* Badge */
+    /* =====================
+       BADGE
+       ===================== */
 
     .badge {
-        max-width:
-            100%;
+        max-width: 100%;
 
         padding:
             8px 13px;
@@ -1272,19 +1123,23 @@ img {
         font-size:
             0.78rem;
 
-        white-space:
-            nowrap;
+        white-space: nowrap;
     }
 
 
-    /* Heading */
+    /* =====================
+       TITLE
+       ===================== */
 
     .hero-title {
-        width:
-            100%;
+        width: 100%;
 
         font-size:
-            clamp(2.45rem, 11vw, 3.45rem);
+            clamp(
+                2.45rem,
+                11vw,
+                3.45rem
+            );
 
         line-height:
             1.10;
@@ -1294,33 +1149,32 @@ img {
     }
 
     .title-line {
-        width:
-            100%;
+        width: 100%;
+
+        display: block;
     }
 
 
-    /* Underline */
+    /* =====================
+       UNDERLINE
+       ===================== */
 
     .title-underline {
-        width:
-            135px;
+        width: 135px;
 
-        height:
-            11px;
+        height: 11px;
 
-        margin-top:
-            1px;
-
-        margin-bottom:
-            20px;
+        margin:
+            1px auto 20px;
     }
 
 
-    /* Description */
+    /* =====================
+       DESCRIPTION
+       ===================== */
 
     .hero-description {
-        width:
-            100%;
+        width: 100%;
 
         max-width:
             520px;
@@ -1336,11 +1190,16 @@ img {
     }
 
 
-    /* CTA */
+    /* =====================
+       BUTTONS
+       ===================== */
 
     .cta-buttons {
         width:
-            min(100%, 360px);
+            min(
+                100%,
+                360px
+            );
 
         gap:
             10px;
@@ -1358,7 +1217,9 @@ img {
     }
 
 
-    /* Platform */
+    /* =====================
+       PLATFORM
+       ===================== */
 
     .platform-availability {
         font-size:
@@ -1366,12 +1227,19 @@ img {
 
         gap:
             8px;
+
+        justify-content:
+            center;
     }
 
 
-    /* Phone */
+    /* =====================
+       PHONE
+       ===================== */
 
     .hero-image {
+        width: 100%;
+
         min-height:
             auto;
 
@@ -1389,7 +1257,10 @@ img {
 
     .phone-wrapper {
         width:
-            min(82vw, 360px);
+            min(
+                82vw,
+                360px
+            );
 
         transform:
             rotate(1deg);
@@ -1404,7 +1275,9 @@ img {
     }
 
 
-    /* Features */
+    /* =====================
+       FEATURES
+       ===================== */
 
     .features {
         padding:
@@ -1431,13 +1304,11 @@ img {
     }
 
     .feature-card:nth-child(odd)::after {
-        display:
-            block;
+        display: block;
     }
 
     .feature-card:nth-child(even)::after {
-        display:
-            none;
+        display: none;
     }
 
     .icon-wrapper {
@@ -1457,7 +1328,9 @@ img {
     }
 
 
-    /* Bottom */
+    /* =====================
+       BOTTOM
+       ===================== */
 
     .bottom-decoration {
         height:
@@ -1522,12 +1395,12 @@ img {
 
     .hero {
         padding:
-            28px 0 20px;
+            27px 0 18px;
     }
 
     .hero-container {
         gap:
-            22px;
+            20px;
     }
 
 
@@ -1545,7 +1418,7 @@ img {
     }
 
 
-    /* Heading */
+    /* Title */
 
     .hero-title {
         font-size:
@@ -1553,6 +1426,9 @@ img {
 
         line-height:
             1.08;
+
+        letter-spacing:
+            -1px;
     }
 
 
@@ -1590,12 +1466,23 @@ img {
 
     .hero-image {
         padding:
-            5px 0 15px;
+            4px 0 15px;
+    }
+
+    .hero-image::before {
+        width:
+            270px;
+
+        height:
+            270px;
     }
 
     .phone-wrapper {
         width:
-            min(84vw, 325px);
+            min(
+                84vw,
+                325px
+            );
     }
 
     .phone-img {
@@ -1666,9 +1553,19 @@ img {
 
 @media (max-width: 360px) {
 
+    .container {
+        width:
+            calc(100% - 20px);
+    }
+
+    .nav-container {
+        min-height:
+            64px;
+    }
+
     .logo {
         font-size:
-            1.72rem;
+            1.7rem;
     }
 
     .btn-download-nav {
@@ -1679,14 +1576,40 @@ img {
             0.67rem;
     }
 
+    .menu-toggle {
+        width:
+            40px;
+
+        height:
+            40px;
+    }
+
+    .menu-toggle span {
+        width:
+            23px;
+    }
+
     .hero-title {
         font-size:
-            2.3rem;
+            2.25rem;
     }
 
     .badge {
         font-size:
-            0.66rem;
+            0.64rem;
+
+        padding:
+            6px 9px;
+    }
+
+    .hero-description {
+        font-size:
+            0.87rem;
+    }
+
+    .platform-availability {
+        font-size:
+            0.70rem;
     }
 
     .phone-wrapper {
@@ -1694,9 +1617,14 @@ img {
             88vw;
     }
 
-    .platform-availability {
+    .feature-card {
+        min-height:
+            130px;
+    }
+
+    .feature-card h3 {
         font-size:
-            0.72rem;
+            0.73rem;
     }
 }
 
@@ -1717,7 +1645,6 @@ img {
     scroll-behavior:
         auto !important;
 }
-
 
 @media (prefers-reduced-motion: reduce) {
 
