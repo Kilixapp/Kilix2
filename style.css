@@ -1,6 +1,6 @@
 /* ==========================================================================
    Kilix Landing Page Stylesheet
-   Version: 2.0 (Mobile & Desktop Responsive Optimized)
+   Version: 3.0 (Fully Responsive & Perfect Phone Mockup Fix)
    ========================================================================== */
 
 /* 1. المتغيرات العامة والإعدادات الأساسية (Variables & Root) */
@@ -15,11 +15,11 @@
     --border-color: #EAECF0;
     --shadow-sm: 0px 1px 2px rgba(16, 24, 40, 0.05);
     --shadow-md: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06);
-    --shadow-lg: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+    --shadow-lg: 0px 20px 30px -10px rgba(11, 27, 61, 0.2);
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
-    --font-main: 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-main: 'Tajawal', 'Cairo', system-ui, -apple-system, sans-serif;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -41,6 +41,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
 }
 
 .container {
@@ -65,7 +66,7 @@ img {
 }
 
 /* ==========================================================================
-   2. أزرار الهوية والعناصر المشتركة (Buttons & Components)
+   2. أزرار الهوية والعناصر المشتركة (Buttons & Badges)
    ========================================================================== */
 .btn {
     display: inline-flex;
@@ -93,9 +94,27 @@ img {
     box-shadow: 0px 6px 16px rgba(255, 85, 0, 0.35);
 }
 
+.btn-secondary {
+    background: #FFFFFF;
+    color: var(--navy-blue);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    transform: translateY(-2px);
+}
+
 .btn-appstore {
     background: var(--navy-blue);
     color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .btn-appstore:hover {
@@ -103,10 +122,22 @@ img {
     transform: translateY(-2px);
 }
 
+.btn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.btn-text small {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     padding: 6px 14px;
     background: #FFF0E6;
     color: var(--primary-orange);
@@ -117,10 +148,11 @@ img {
 }
 
 /* ==========================================================================
-   3. شريط التنقل العلوي (Header & Navigation)
+   3. شريط التنقل العلوي والقائمة الجانبية (Header & Navigation)
    ========================================================================== */
-.header {
-    background: #FFFFFF;
+.navbar, .header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -134,43 +166,63 @@ img {
     height: 70px;
 }
 
-.logo-link {
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.logo-orange { color: var(--primary-orange); }
+.logo-blue { color: var(--navy-blue); }
+
+.btn-download-nav {
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-.logo-img {
-    height: 36px;
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.nav-link {
-    font-weight: 600;
-    color: var(--navy-blue);
-    font-size: 0.95rem;
+    background: var(--navy-blue);
+    color: #FFFFFF;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 700;
     transition: var(--transition);
 }
 
-.nav-link:hover, .nav-link.active {
-    color: var(--primary-orange);
+.btn-download-nav:hover {
+    background: var(--primary-orange);
 }
 
 .menu-toggle {
     display: none;
+    background: transparent;
+    border: none;
     font-size: 1.5rem;
     color: var(--navy-blue);
     cursor: pointer;
 }
 
+/* طبقة التظليل خلف القائمة الجانبية للجوال */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 27, 61, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* ==========================================================================
-   4. قسم الهيرو الرئيسي (Hero Section)
+   4. قسم الهيرو ومجسم الجوال (Hero & Phone Mockup Frame)
    ========================================================================== */
 .hero {
     padding: 50px 0 30px;
@@ -227,16 +279,69 @@ img {
     color: var(--text-muted);
 }
 
-.phone-wrapper {
-    position: relative;
-    max-width: 330px;
-    margin: 0 auto;
+.platform-availability .divider {
+    color: var(--border-color);
 }
 
-.phone-frame {
+.hero-image, .why-us-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* مجسم الهاتف الآيفون المتجاوب المطور */
+.phone-wrapper {
+    position: relative;
     width: 100%;
-    border-radius: 36px;
+    max-width: 310px;
+    aspect-ratio: 9 / 18.5;
+    background: #000000;
+    border-radius: 44px;
+    padding: 9px;
     box-shadow: var(--shadow-lg);
+    border: 2px solid #2D3748;
+}
+
+/* الجزيرة التفاعلية للكاميرا العلوية (Dynamic Island) */
+.phone-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 20px;
+    background-color: #000000;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+/* ضمان ملاءمة صورة التطبيق داخل إطار الشاشة */
+.phone-img, .phone-frame {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 35px;
+    display: block;
+}
+
+/* البطاقة العائمة فوق الهاتف */
+.floating-search-card {
+    position: absolute;
+    bottom: 20px;
+    right: -15px;
+    background: #FFFFFF;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-orange);
+    box-shadow: var(--shadow-md);
+    font-size: 1.2rem;
+    z-index: 15;
 }
 
 /* ==========================================================================
@@ -249,18 +354,22 @@ img {
 .features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    background: transparent;
+    gap: 16px;
 }
 
 .feature-card {
     background: var(--bg-card);
-    padding: 16px 12px;
+    padding: 18px 12px;
     text-align: center;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 85, 0, 0.2);
 }
 
 .icon-wrapper {
@@ -277,30 +386,37 @@ img {
 }
 
 .feature-card h3 {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 800;
     color: var(--navy-blue);
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
 /* ==========================================================================
-   6. قسم لماذا تختار تجار الكار الكبار Kilix (Why Us / Advantages Grid)
+   6. قسم لماذا يختار التجار Kilix (Why Us / Advantages Grid)
    ========================================================================== */
 .why-us {
-    padding: 60px 0;
+    padding: 50px 0;
 }
 
-.section-header {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto 40px;
+.why-us-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     font-weight: 900;
     color: var(--navy-blue);
+    line-height: 1.3;
     margin-bottom: 12px;
+}
+
+.section-title .highlight {
+    color: var(--primary-orange);
 }
 
 .section-desc {
@@ -310,17 +426,18 @@ img {
 
 .features-cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .card-item {
     background: var(--bg-card);
-    padding: 28px 20px;
+    padding: 28px 24px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
+    position: relative;
     transition: var(--transition);
 }
 
@@ -335,11 +452,11 @@ img {
     height: 52px;
     background: #FFEFE6;
     color: var(--primary-orange);
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     margin-bottom: 16px;
 }
 
@@ -351,9 +468,18 @@ img {
 }
 
 .card-item p {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     line-height: 1.6;
+}
+
+.card-link {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: var(--primary-orange);
+    font-size: 1rem;
+    transition: var(--transition);
 }
 
 /* ==========================================================================
@@ -363,7 +489,7 @@ img {
     background: #FFF0E6;
     color: var(--navy-blue);
     border-radius: var(--radius-md);
-    padding: 16px 20px;
+    padding: 20px 30px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -374,11 +500,11 @@ img {
 .trust-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .trust-icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--primary-orange);
 }
 
@@ -388,102 +514,92 @@ img {
 }
 
 .trust-text strong {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 800;
 }
 
 .trust-text span {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
 }
 
 .trust-divider {
     width: 1px;
-    height: 30px;
+    height: 35px;
     background: rgba(11, 27, 61, 0.12);
 }
 
 /* ==========================================================================
-   8. تذييل الصفحة (Footer)
+   8. قسم الدعوة للتحميل والتذييل السفلي (Bottom CTA & Footer)
    ========================================================================== */
-.footer {
+.bottom-cta {
     background: var(--navy-blue);
     color: #FFFFFF;
-    padding: 40px 0 20px;
+    padding: 60px 0;
+    text-align: center;
     margin-top: 40px;
 }
 
-.footer-container {
+.cta-content h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.cta-content h2 .highlight {
+    color: var(--primary-orange);
+}
+
+.cta-content p {
+    font-size: 1.05rem;
+    color: #CBD5E1;
+    margin-bottom: 28px;
+}
+
+.cta-buttons-row {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-}
-
-.footer-logo {
-    height: 32px;
-}
-
-.footer-links {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-links a {
-    color: #A0AEC0;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-.footer-links a:hover {
-    color: #FFFFFF;
-}
-
-.footer-copyright {
-    color: #718096;
-    font-size: 0.82rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    padding-top: 16px;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 /* ==========================================================================
-   9. التجاوب مع الشاشات المختلفة (Responsive Web Design Fixes)
+   9. التجاوب مع الشاشات المختلفة (Responsive Fixes)
    ========================================================================== */
 
 @media (max-width: 992px) {
-    .hero-container, .why-us-hero {
+    .hero-container, 
+    .why-us-hero {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .hero-description, .section-desc {
+    .hero-content {
+        margin: 0 auto;
+    }
+
+    .hero-description, 
+    .section-desc {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .cta-buttons {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
+    .cta-buttons, 
     .platform-availability {
         justify-content: center;
+        align-items: center;
     }
 
-    /* إظهار الهاتف وتوسطه */
     .hero-image {
         margin-top: 25px;
     }
 
     .phone-wrapper {
-        margin: 0 auto;
-        max-width: 280px;
+        max-width: 270px;
     }
 
     .features-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
@@ -492,27 +608,33 @@ img {
         display: block; 
     }
 
-    .nav-links {
-        display: none; /* يمكن ربطها بكود JS للقائمة الجانبية */
+    .hero-title {
+        font-size: 2.2rem;
     }
 
-    /* إصلاح الميزات الأفقية السريعة: بطاقتين في كل صف بالجوال لعدم تطويل الصفحة */
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* إصلاح الميزات الأفقية السريعة: بطاقتين في كل صف للجوال */
     .features-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
     }
 
-    /* بطاقات شبكة لماذا يختار التجار Kilix */
-    .features-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    .feature-card {
+        padding: 14px 10px;
     }
 
-    /* الحفاظ على شريط الضمانات أفقياً بالجوال */
+    .feature-card h3 {
+        font-size: 0.85rem;
+    }
+
+    /* شريط الضمانات أفقياً ومناسب للجوال */
     .trust-banner {
         flex-direction: row !important;
         justify-content: space-between !important;
-        padding: 12px 15px !important;
+        padding: 14px 12px !important;
     }
 
     .trust-item {
@@ -520,50 +642,56 @@ img {
     }
 
     .trust-icon {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .trust-text strong {
-        font-size: 0.82rem;
+        font-size: 0.85rem;
     }
 
     .trust-text span {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
     }
 
     .trust-divider {
-        height: 25px;
-        width: 1px;
+        height: 28px;
     }
 
-    /* إصلاح اتجاه السهم في أزرار الأندرويد للتجاوب مع اللغة العربية */
+    /* تعكيس حركة الأسهم للغة العربية */
     .btn-primary i.fa-arrow-left,
-    .btn-primary i.fa-arrow-right {
+    .card-link i.fa-arrow-left {
         transform: scaleX(-1);
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title { 
-        font-size: 2.1rem; 
+    .hero-title {
+        font-size: 1.8rem;
     }
 
-    .section-title { 
-        font-size: 1.8rem; 
+    .phone-wrapper {
+        max-width: 230px;
+        padding: 7px;
+        border-radius: 36px;
     }
 
-    /* التأكيد على بقاء الميزات بطاقتين بالصف وعدم تحولها للعمودي */
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+    .phone-wrapper::before {
+        width: 65px;
+        height: 16px;
+        top: 12px;
     }
 
-    .cta-buttons-row { 
-        flex-direction: column; 
-        width: 100%; 
+    .phone-img, .phone-frame {
+        border-radius: 28px;
     }
 
-    .cta-buttons-row .btn, 
-    .cta-buttons-row .btn-appstore { 
-        width: 100%; 
+    .cta-buttons-row {
+        flex-direction: column;
+        width: 100%;
     }
-   }
+
+    .cta-buttons-row .btn,
+    .cta-buttons-row .btn-appstore {
+        width: 100%;
+    }
+}
