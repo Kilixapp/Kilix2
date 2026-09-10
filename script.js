@@ -1,59 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. القائمة الجانبية في الشريط العلوي (Mobile Menu Toggle)
+    // 1. القائمة الجانبية للشاشات الصغيرة (Mobile Navigation Drawer)
     const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle) {
+    const navContainer = document.querySelector('.nav-container');
+
+    if (menuToggle && navContainer) {
         menuToggle.addEventListener('click', () => {
-            // يمكن ربطه بفتح القائمة عند الحاجة
-            alert('تم الضغط على قائمة التصفح.');
+            menuToggle.classList.toggle('active');
+            navContainer.classList.toggle('menu-open');
         });
     }
 
-    // 2. تفاعل والتمرير الناعم عند الضغط على أزرار التحميل
+    // 2. إدارة أزرار التحميل والتمرير السلس (Smooth Scroll & Download Action)
     const downloadButtons = document.querySelectorAll('.btn, .btn-download-nav');
     downloadButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const href = button.getAttribute('href');
-            if (href === '#') {
+            
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
-                console.log('طلب تحميل التطبيق عبر:', button.innerText.trim());
+                const targetElement = document.querySelector(href);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
 
-    // 3. تأثير حركي عند التمرير فوق بطاقات مميزات القسم الثاني (Hover Effect Log)
-    const featureCards = document.querySelectorAll('.card-item');
-    featureCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.borderColor = 'var(--primary-orange)';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.borderColor = 'rgba(0, 0, 0, 0.04)';
-        });
-    });
-
-    // 4. انيميشنظهور العناصر أثناء التمرير (Scroll Animation)
+    // 3. تأثير التمرير التدريجي للعناصر (Intersection Observer Animation)
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // تطبيق الأنيميشن على بطاقات المميزات وشريط الضمانات
-    const elementsToAnimate = document.querySelectorAll('.card-item, .trust-banner, .feature-card');
+    // تطبيق مراقبة الظهور على البطاقات والعناصر الرئيسية
+    const elementsToAnimate = document.querySelectorAll('.card-item, .trust-banner, .feature-card, .hero-content, .why-us-visual');
+    
     elementsToAnimate.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.5s ease-out';
+        el.classList.add('reveal-element');
         revealOnScroll.observe(el);
     });
 
