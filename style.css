@@ -300,11 +300,19 @@ img {
    MENU
    ========================================================= */
 
-.menu-toggle {
+.menu-wrapper {
 
     grid-column: 1;
 
     justify-self: start;
+
+    position: relative;
+
+    z-index: 1005;
+}
+
+
+.menu-toggle {
 
     width: 48px;
 
@@ -329,6 +337,9 @@ img {
     color: var(--navy);
 
     z-index: 1002;
+
+    transition:
+        transform var(--transition);
 }
 
 .menu-toggle span {
@@ -345,8 +356,12 @@ img {
 
     transition:
         transform var(--transition),
-        opacity var(--transition);
+        opacity var(--transition),
+        background var(--transition);
 }
+
+
+/* X عند فتح القائمة */
 
 .menu-toggle.active span:nth-child(1) {
 
@@ -356,6 +371,7 @@ img {
 }
 
 .menu-toggle.active span:nth-child(2) {
+
     opacity: 0;
 }
 
@@ -368,7 +384,130 @@ img {
 
 
 /* =========================================================
-   NAV DOWNLOAD
+   MENU DROPDOWN
+   ========================================================= */
+
+.menu-dropdown {
+
+    position: absolute;
+
+    top: calc(100% + 12px);
+
+    right: 0;
+
+    width: 215px;
+
+    padding: 8px;
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 18px 45px rgba(16, 46, 80, 0.16);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-10px)
+        scale(0.96);
+
+    transform-origin: top right;
+
+    transition:
+        opacity var(--transition),
+        visibility var(--transition),
+        transform var(--transition);
+}
+
+
+/* القائمة مفتوحة */
+
+.menu-wrapper.open .menu-dropdown {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* عناصر القائمة */
+
+.menu-dropdown a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 10px 14px;
+
+    border-radius: 12px;
+
+    color: var(--navy);
+
+    font-size: 0.92rem;
+
+    font-weight: 800;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+
+/* Hover */
+
+.menu-dropdown a:hover {
+
+    background:
+        var(--orange-soft);
+
+    color:
+        var(--orange);
+
+    transform:
+        translateX(-3px);
+}
+
+
+/* أيقونات القائمة */
+
+.menu-dropdown a i {
+
+    width: 22px;
+
+    text-align: center;
+
+    color: var(--orange);
+
+    font-size: 1rem;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV DOWNLOAD BUTTON
    ========================================================= */
 
 .btn-download-nav {
@@ -458,23 +597,12 @@ img {
 
     margin-inline: auto;
 
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(360px, 0.92fr);
-
-    gap: 50px;
+    display: flex;
 
     align-items: center;
 
-    direction: ltr;
+    justify-content: center;
 }
-
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
 
 .hero-content {
 
@@ -800,115 +928,7 @@ img {
 
 
 /* =========================================================
-   07. PHONE
-   ========================================================= */
-
-.hero-image {
-
-    direction: ltr;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    position: relative;
-
-    width: 100%;
-
-    min-height: 600px;
-}
-
-.hero-image::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 470px;
-
-    height: 470px;
-
-    max-width: 90%;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 101, 0, 0.075);
-
-    filter: blur(3px);
-
-    z-index: -1;
-}
-
-.phone-wrapper {
-
-    position: relative;
-
-    width:
-        min(
-            100%,
-            430px
-        );
-
-    transform:
-        translate3d(
-            var(--parallax-x, 0px),
-            var(--parallax-y, 0px),
-            0
-        )
-        rotate(1.5deg);
-
-    transition:
-        transform 0.18s ease-out;
-}
-
-.phone-wrapper::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 10%;
-
-    right: 10%;
-
-    bottom: -28px;
-
-    height: 40px;
-
-    background:
-        rgba(24, 55, 92, 0.18);
-
-    filter: blur(25px);
-
-    border-radius: 50%;
-
-    z-index: -1;
-}
-
-.phone-img {
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    border-radius: 40px;
-
-    border: 7px solid #151a22;
-
-    box-shadow:
-        var(--shadow-phone);
-
-    background: #151a22;
-}
-
-
-/* =========================================================
-   08. FEATURES
+   07. FEATURES
    ========================================================= */
 
 .features {
@@ -916,16 +936,10 @@ img {
     position: relative;
 
     padding:
-        45px 0 90px;
-
-    z-index: 2;
+        35px 0 70px;
 }
 
 .features-container {
-    width: 100%;
-}
-
-.features-grid {
 
     width:
         min(
@@ -934,57 +948,63 @@ img {
         );
 
     margin-inline: auto;
+}
+
+.features-grid {
 
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    border-top:
-        1px solid var(--border);
+    gap: 20px;
 
-    border-bottom:
-        1px solid var(--border);
+    align-items: stretch;
 }
-
-
-/* =========================================================
-   FEATURE CARD
-   ========================================================= */
 
 .feature-card {
 
-    position: relative;
+    min-height: 175px;
 
-    padding:
-        30px 20px 35px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
 
     text-align: center;
 
-    transition:
-        transform var(--transition);
-}
-
-.feature-card:not(:last-child)::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    top: 25%;
-
-    width: 1px;
-
-    height: 50%;
+    padding: 25px 15px;
 
     background:
-        var(--border);
+        rgba(255, 255, 255, 0.78);
+
+    border:
+        1px solid rgba(24, 55, 92, 0.07);
+
+    border-radius: 22px;
+
+    box-shadow:
+        var(--shadow-soft);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(255, 101, 0, 0.18);
+
+    box-shadow:
+        0 18px 40px rgba(24, 55, 92, 0.11);
 }
 
 
@@ -994,12 +1014,9 @@ img {
 
 .icon-wrapper {
 
-    width: 92px;
+    width: 64px;
 
-    height: 92px;
-
-    margin:
-        0 auto 20px;
+    height: 64px;
 
     display: flex;
 
@@ -1007,16 +1024,17 @@ img {
 
     justify-content: center;
 
+    margin-bottom: 15px;
+
     border-radius: 50%;
 
     background:
-        #ffeadb;
+        var(--orange-soft);
 
     color:
         var(--orange);
 
-    font-size:
-        2.6rem;
+    font-size: 1.45rem;
 
     transition:
         transform var(--transition),
@@ -1026,16 +1044,14 @@ img {
 .feature-card:hover .icon-wrapper {
 
     transform:
-        scale(1.05);
+        scale(1.08);
 
     background:
-        #ffe1cf;
+        var(--orange);
+
+    color:
+        var(--white);
 }
-
-
-/* =========================================================
-   FEATURE TEXT
-   ========================================================= */
 
 .feature-card h3 {
 
@@ -1043,51 +1059,53 @@ img {
         var(--navy);
 
     font-size:
-        1.25rem;
+        0.98rem;
 
     font-weight:
-        900;
+        800;
 
     line-height:
-        1.55;
+        1.65;
 }
 
 
 /* =========================================================
-   09. BOTTOM DECORATION
+   08. BOTTOM DECORATION
    ========================================================= */
 
 .bottom-decoration {
 
     position: relative;
 
-    height: 100px;
+    width: 100%;
+
+    height: 110px;
 
     overflow: hidden;
 
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .bottom-orange {
 
     position: absolute;
 
-    width: 70%;
+    width: 120%;
 
-    height: 150px;
+    height: 120px;
 
-    right: -10%;
+    left: -10%;
 
-    bottom: -105px;
+    bottom: -75px;
 
     background:
         var(--orange);
 
     border-radius:
-        50% 50% 0 0;
+        50% 50% 0 0 / 55% 55% 0 0;
 
     transform:
-        rotate(-4deg);
+        rotate(-2deg);
 
     opacity: 0.95;
 }
@@ -1096,29 +1114,239 @@ img {
 
     position: absolute;
 
-    width: 65%;
+    width: 120%;
 
-    height: 145px;
+    height: 115px;
 
     left: -10%;
 
-    bottom: -110px;
+    bottom: -105px;
 
     background:
-        var(--navy);
+        var(--navy-dark);
 
     border-radius:
-        50% 50% 0 0;
+        50% 50% 0 0 / 55% 55% 0 0;
 
     transform:
-        rotate(5deg);
-
-    opacity: 0.98;
+        rotate(1deg);
 }
 
 
 /* =========================================================
-   10. SCROLL REVEAL
+   09. FOOTER
+   ========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    background:
+        var(--navy-dark);
+
+    color:
+        var(--white);
+
+    padding-top:
+        55px;
+
+    overflow:
+        hidden;
+}
+
+.footer-container {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding-top: 10px;
+
+    padding-bottom: 50px;
+}
+
+.footer-brand {
+
+    text-align: right;
+}
+
+.footer-logo {
+
+    display: inline-block;
+
+    font-size: 2.2rem;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 10px;
+
+    text-decoration: none;
+
+    transition:
+        transform var(--transition);
+}
+
+.footer-logo:hover {
+
+    transform:
+        scale(1.03);
+}
+
+.footer-brand p {
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   FOOTER CONTACT
+   ========================================================= */
+
+.footer-contact {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.footer-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 50px;
+
+    padding: 8px 15px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 14px;
+
+    color:
+        var(--white);
+
+    text-decoration: none;
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        700;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.footer-link:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 101, 0, 0.12);
+
+    border-color:
+        rgba(255, 101, 0, 0.45);
+}
+
+.footer-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background:
+        var(--orange);
+
+    color:
+        var(--white);
+
+    font-size:
+        0.95rem;
+
+    transition:
+        transform var(--transition);
+}
+
+.footer-link:hover .footer-icon {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.footer-bottom {
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    padding:
+        18px 0;
+
+    text-align:
+        center;
+}
+
+.footer-bottom p {
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   10. REVEAL ANIMATION
    ========================================================= */
 
 .reveal-element {
@@ -1126,11 +1354,11 @@ img {
     opacity: 0;
 
     transform:
-        translateY(22px);
+        translateY(24px);
 
     transition:
-        opacity 0.65s cubic-bezier(.16,1,.3,1),
-        transform 0.65s cubic-bezier(.16,1,.3,1);
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
 .reveal-element.is-visible {
@@ -1143,168 +1371,131 @@ img {
 
 
 /* =========================================================
-   11. TABLET
+   11. RESPONSIVE — TABLET
    ========================================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 992px) {
 
-    .nav-container,
+    .nav-container {
+
+        min-height: 74px;
+    }
+
+    .hero {
+
+        min-height:
+            auto;
+
+        padding:
+            65px 0 45px;
+    }
+
     .hero-container {
 
         width:
             min(
-                calc(100% - 32px),
-                900px
+                calc(100% - 40px),
+                720px
             );
     }
 
+    .hero-content {
 
-    .hero {
+        max-width:
+            650px;
 
-        padding:
-            42px 0 30px;
+        margin-inline:
+            auto;
 
-        min-height:
+        text-align:
+            center;
+    }
+
+    .badge {
+
+        margin-inline:
             auto;
     }
 
-
-    .hero-container {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 32px;
-
-        align-items: center;
-
-        direction: rtl;
-
-        text-align: center;
-    }
-
-
-    .hero-content {
-
-        width: 100%;
-
-        max-width: 700px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        margin-inline: auto;
-
-        text-align: center;
-    }
-
-
     .hero-title {
 
-        align-items: center;
+        align-items:
+            center;
 
-        text-align: center;
+        margin-inline:
+            auto;
+
+        text-align:
+            center;
     }
-
 
     .title-underline {
-        margin-inline: auto;
-    }
 
+        margin:
+            2px auto 23px;
+    }
 
     .hero-description {
-        text-align: center;
+
+        margin-inline:
+            auto;
     }
 
+    .cta-buttons {
 
-    .hero-image {
-
-        min-height: auto;
-
-        width: min(100%, 560px);
+        margin-inline:
+            auto;
     }
 
+    .platform-availability {
 
-    .phone-wrapper {
-        width: min(100%, 440px);
+        justify-content:
+            center;
+
+        padding-right:
+            0;
     }
 
-
-    /* Features */
     .features-grid {
 
         grid-template-columns:
             repeat(2, 1fr);
-
-        border: 0;
-
-        width:
-            min(
-                calc(100% - 32px),
-                700px
-            );
     }
 
+    .footer-container {
 
-    .feature-card {
+        flex-direction:
+            column;
 
-        padding:
-            35px 20px 45px;
+        align-items:
+            center;
+
+        text-align:
+            center;
+
+        gap:
+            28px;
     }
 
+    .footer-brand {
 
-    .feature-card:nth-child(1),
-    .feature-card:nth-child(2) {
-
-        border-bottom:
-            1px solid var(--border);
+        text-align:
+            center;
     }
 
+    .footer-contact {
 
-    .feature-card:nth-child(2n)::after {
-        display: none;
-    }
-
-
-    .feature-card:nth-child(odd)::after {
-
-        display: block;
-
-        left: 0;
-
-        top: 20%;
-
-        height: 60%;
-    }
-
-
-    .icon-wrapper {
-
-        width: 110px;
-
-        height: 110px;
-
-        font-size: 3rem;
-
-        margin-bottom: 25px;
-    }
-
-
-    .feature-card h3 {
-        font-size: 1.5rem;
+        justify-content:
+            center;
     }
 }
 
 
 /* =========================================================
-   12. MOBILE
+   12. RESPONSIVE — MOBILE
    ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
     .container {
 
@@ -1313,124 +1504,164 @@ img {
     }
 
 
-    /* NAV */
+    /* Navbar */
 
     .nav-container {
 
         width:
-            calc(100% - 28px);
+            calc(100% - 24px);
 
         min-height:
-            72px;
+            68px;
     }
-
 
     .logo {
-        font-size: 2.25rem;
-    }
 
+        font-size:
+            2.15rem;
+    }
 
     .menu-toggle {
 
-        width: 44px;
+        width:
+            44px;
 
-        height: 44px;
+        height:
+            44px;
     }
-
 
     .menu-toggle span {
 
-        width: 27px;
+        width:
+            25px;
 
-        height: 3px;
+        height:
+            3px;
     }
-
 
     .btn-download-nav {
 
-        min-width: auto;
+        min-width:
+            auto;
 
         padding:
-            10px 16px;
+            10px 13px;
+
+        gap:
+            6px;
 
         font-size:
-            0.86rem;
+            0.78rem;
+    }
 
-        gap: 7px;
+    .btn-download-nav i {
+
+        font-size:
+            0.8rem;
     }
 
 
-    /* HERO */
+    /* Menu */
+
+    .menu-dropdown {
+
+        width:
+            195px;
+
+        top:
+            calc(100% + 9px);
+
+        right:
+            -4px;
+
+        border-radius:
+            16px;
+    }
+
+    .menu-dropdown a {
+
+        min-height:
+            50px;
+
+        padding:
+            9px 12px;
+
+        font-size:
+            0.88rem;
+    }
+
+
+    /* Hero */
 
     .hero {
 
         padding:
-            38px 0 20px;
+            48px 0 30px;
     }
-
 
     .hero-container {
 
-        gap:
-            28px;
+        width:
+            calc(100% - 32px);
     }
-
 
     .badge {
 
-        font-size:
-            0.82rem;
-
         padding:
-            8px 14px;
+            8px 13px;
+
+        gap:
+            7px;
+
+        font-size:
+            0.78rem;
 
         margin-bottom:
-            18px;
+            19px;
     }
-
 
     .hero-title {
 
         font-size:
             clamp(
-                2.65rem,
-                11vw,
-                4rem
+                2.55rem,
+                13vw,
+                3.5rem
             );
-
-        line-height:
-            1.15;
 
         letter-spacing:
             -1px;
     }
 
-
     .title-underline {
 
         width:
-            125px;
+            115px;
 
-        margin-top:
-            5px;
+        height:
+            10px;
+
+        border-bottom-width:
+            4px;
 
         margin-bottom:
             20px;
     }
 
-
     .hero-description {
 
         font-size:
-            1rem;
+            0.98rem;
 
         line-height:
             1.8;
 
         margin-bottom:
-            24px;
+            25px;
     }
 
+
+    /* CTA */
 
     .cta-buttons {
 
@@ -1438,189 +1669,175 @@ img {
             100%;
 
         max-width:
-            390px;
+            360px;
     }
-
 
     .btn {
 
         min-height:
-            58px;
+            54px;
+
+        padding:
+            12px 18px;
 
         font-size:
-            1rem;
+            0.92rem;
+    }
+
+    .platform-availability {
+
+        font-size:
+            0.78rem;
     }
 
 
-    .hero-image {
-
-        width:
-            100%;
-    }
-
-
-    .phone-wrapper {
-
-        width:
-            min(
-                94vw,
-                470px
-            );
-    }
-
-
-    .phone-img {
-
-        border-width:
-            6px;
-
-        border-radius:
-            34px;
-    }
-
-
-    /* =========================================
-       FEATURES — MOBILE
-       ========================================= */
+    /* Features */
 
     .features {
 
         padding:
-            35px 0 65px;
+            25px 0 50px;
     }
-
 
     .features-grid {
 
-        width:
-            calc(100% - 18px);
-
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            repeat(2, 1fr);
 
-        border: 0;
-
-        gap: 0;
+        gap:
+            12px;
     }
-
 
     .feature-card {
 
-        min-width: 0;
+        min-height:
+            155px;
 
         padding:
-            38px 8px 55px;
+            20px 9px;
 
-        display:
-            flex;
+        border-radius:
+            18px;
+    }
+
+    .icon-wrapper {
+
+        width:
+            55px;
+
+        height:
+            55px;
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            1.2rem;
+    }
+
+    .feature-card h3 {
+
+        font-size:
+            0.82rem;
+
+        line-height:
+            1.55;
+    }
+
+
+    /* Decoration */
+
+    .bottom-decoration {
+
+        height:
+            85px;
+    }
+
+    .bottom-orange {
+
+        height:
+            95px;
+
+        bottom:
+            -65px;
+    }
+
+    .bottom-blue {
+
+        height:
+            90px;
+
+        bottom:
+            -82px;
+    }
+
+
+    /* Footer */
+
+    .site-footer {
+
+        padding-top:
+            42px;
+    }
+
+    .footer-container {
+
+        width:
+            calc(100% - 32px);
+
+        padding-bottom:
+            38px;
+
+        gap:
+            25px;
+    }
+
+    .footer-logo {
+
+        font-size:
+            2rem;
+    }
+
+    .footer-brand p {
+
+        font-size:
+            0.88rem;
+    }
+
+    .footer-contact {
+
+        width:
+            100%;
 
         flex-direction:
             column;
 
         align-items:
-            center;
+            stretch;
 
-        justify-content:
-            flex-start;
+        gap:
+            10px;
     }
 
-
-    /*
-       خطوط الفصل مثل التصميم
-    */
-
-    .feature-card:nth-child(1),
-    .feature-card:nth-child(2) {
-
-        border-bottom:
-            0;
-    }
-
-
-    .feature-card:nth-child(1),
-    .feature-card:nth-child(3) {
-
-        border-left:
-            1px solid
-            rgba(24, 55, 92, 0.08);
-    }
-
-
-    .feature-card::after {
-        display: none !important;
-    }
-
-
-    /* الدائرة الكبيرة */
-
-    .icon-wrapper {
-
-        width:
-            clamp(
-                150px,
-                20vw,
-                235px
-            );
-
-        height:
-            clamp(
-                150px,
-                20vw,
-                235px
-            );
-
-        margin:
-            0 auto 38px;
-
-        background:
-            #ffeadb;
-
-        font-size:
-            clamp(
-                3.2rem,
-                7vw,
-                5rem
-            );
-
-        flex-shrink:
-            0;
-    }
-
-
-    /* النص */
-
-    .feature-card h3 {
+    .footer-link {
 
         width:
             100%;
 
-        color:
-            var(--navy);
-
-        font-size:
-            clamp(
-                1.45rem,
-                4.2vw,
-                2.8rem
-            );
-
-        font-weight:
-            900;
-
-        line-height:
-            1.45;
-
-        text-align:
+        justify-content:
             center;
+
+        min-height:
+            50px;
     }
 }
 
 
 /* =========================================================
-   13. SMALL PHONES
+   13. VERY SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
 
     .nav-container {
 
@@ -1628,159 +1845,82 @@ img {
             calc(100% - 20px);
     }
 
-
     .logo {
-        font-size:
-            2rem;
-    }
 
+        font-size:
+            1.95rem;
+    }
 
     .btn-download-nav {
 
         padding:
-            9px 13px;
+            9px 10px;
 
         font-size:
-            0.78rem;
+            0.72rem;
     }
 
+    .menu-toggle {
 
-    .btn-download-nav i {
-        font-size:
-            0.9rem;
+        width:
+            42px;
+
+        height:
+            42px;
     }
-
 
     .hero-title {
 
         font-size:
-            2.55rem;
+            2.45rem;
     }
-
-
-    .hero-description {
-
-        font-size:
-            0.94rem;
-    }
-
-
-    .phone-wrapper {
-
-        width:
-            96vw;
-    }
-
-
-    /* FEATURES */
-
-    .features {
-
-        padding-top:
-            25px;
-    }
-
 
     .features-grid {
 
-        width:
-            calc(100% - 8px);
+        gap:
+            9px;
     }
-
 
     .feature-card {
 
+        min-height:
+            145px;
+
         padding:
-            32px 4px 48px;
+            17px 6px;
     }
-
-
-    .icon-wrapper {
-
-        width:
-            145px;
-
-        height:
-            145px;
-
-        margin-bottom:
-            28px;
-
-        font-size:
-            3.2rem;
-    }
-
 
     .feature-card h3 {
 
         font-size:
-            1.35rem;
+            0.76rem;
+    }
 
-        line-height:
-            1.45;
+    .footer-container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+    .footer-link {
+
+        font-size:
+            0.82rem;
+    }
+
+    .footer-icon {
+
+        width:
+            33px;
+
+        height:
+            33px;
     }
 }
 
 
 /* =========================================================
-   14. VERY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 360px) {
-
-    .logo {
-        font-size:
-            1.8rem;
-    }
-
-
-    .btn-download-nav span {
-        display: none;
-    }
-
-
-    .btn-download-nav {
-
-        min-width:
-            44px;
-
-        width:
-            44px;
-
-        padding:
-            10px;
-    }
-
-
-    .hero-title {
-        font-size:
-            2.3rem;
-    }
-
-
-    .icon-wrapper {
-
-        width:
-            125px;
-
-        height:
-            125px;
-
-        font-size:
-            2.8rem;
-    }
-
-
-    .feature-card h3 {
-
-        font-size:
-            1.2rem;
-    }
-}
-
-
-/* =========================================================
-   15. REDUCED MOTION
+   14. ACCESSIBILITY — REDUCE MOTION
    ========================================================= */
 
 .reduce-motion *,
@@ -1798,4 +1938,24 @@ img {
 
     scroll-behavior:
         auto !important;
+}
+
+
+/* =========================================================
+   15. FOCUS
+   ========================================================= */
+
+.menu-toggle:focus-visible,
+.btn-download-nav:focus-visible,
+.btn:focus-visible,
+.menu-dropdown a:focus-visible,
+.footer-link:focus-visible,
+.logo:focus-visible,
+.footer-logo:focus-visible {
+
+    outline:
+        3px solid rgba(255, 101, 0, 0.35);
+
+    outline-offset:
+        3px;
 }
