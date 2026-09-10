@@ -1062,4 +1062,74 @@ button {
 }
 
 
-/* ============================
+/* =========================================================
+   15. VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .container {
+        width: calc(100% - 24px);
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-description {
+        font-size: 0.84rem;
+    }
+
+    .phone-wrapper {
+        width: 250px;
+    }
+
+    .features-grid {
+        gap: 10px;
+    }
+
+    .feature-card {
+        padding: 20px 9px;
+    }
+
+    .feature-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.35rem;
+    }
+
+    .feature-card h3 {
+        font-size: 0.88rem;
+    }
+
+    .feature-card p {
+        font-size: 0.72rem;
+    }
+
+    .footer-container {
+        width: calc(100% - 24px);
+    }
+
+    .footer-link {
+        font-size: 0.82rem;
+    }
+
+    .footer-icon {
+        width: 33px;
+        height: 33px;
+    }
+}
+
+
+/* =========================================================
+   16. REDUCED MOTION — FIXED
+   ========================================================= */
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
