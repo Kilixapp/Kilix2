@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kilix - منصة التجارة بالجملة في الجزائر</title>
-    <!-- Font Awesome للأيقونات -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- خط Tajawal من Google Fonts -->
+    <!-- Google Fonts: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- ملفات CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="animated-background.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,7 +20,7 @@
         <div class="circle circle-2"></div>
     </div>
 
-    <!-- الهيدر / الشريط العلوي -->
+    <!-- الشريط العلوي -->
     <header class="navbar">
         <div class="container nav-container">
             <button class="menu-toggle" aria-label="فتح القائمة">
@@ -48,7 +48,7 @@
                 </div>
 
                 <h1 class="hero-title">
-                    كل ما تحتاجه بالجملة،<br>
+                    كل ما تحتاجه <span class="text-blue">بالجملة،</span><br>
                     <span class="highlight">في مكان واحد.</span>
                 </h1>
 
@@ -78,8 +78,7 @@
 
             <div class="hero-image">
                 <div class="phone-mockup">
-                    <!-- استبدل app-interface.png بالاسم الصحيح لملف الصورة لديك -->
-                    <img src="app-interface.png" alt="واجهة تطبيق Kilix الرئيسي" loading="eager" width="350" height="700" onerror="this.src='https://via.placeholder.com/350x700/0f172a/ffffff?text=Kilix+App+Interface'">
+                    <img src="app-interface.png" alt="واجهة تطبيق Kilix الرئيسي" loading="eager" onerror="this.onerror=null; this.src='https://via.placeholder.com/350x700/0b1b3d/ffffff?text=Kilix+App+Interface';">
                 </div>
             </div>
 
@@ -92,16 +91,9 @@
             
             <div class="feature-card">
                 <div class="icon-wrapper">
-                    <i class="fa-solid fa-truck-fast"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <h3>اطلب مباشر من هاتفك</h3>
-            </div>
-
-            <div class="feature-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <h3>موردين موثوقين ومتنوعين</h3>
+                <h3>ابحث ذكي بالاسم أو الصورة</h3>
             </div>
 
             <div class="feature-card">
@@ -113,9 +105,16 @@
 
             <div class="feature-card">
                 <div class="icon-wrapper">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-users"></i>
                 </div>
-                <h3>بحث ذكي بالاسم أو الصورة</h3>
+                <h3>موردين موثوقين ومتنوعين</h3>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3>اطلب مباشر من هاتفك</h3>
             </div>
 
         </div>
@@ -141,15 +140,15 @@
 
                 <div class="why-us-visual">
                     <div class="phone-wrapper">
-                        <!-- استبدل app-screen.png بالاسم الصحيح لملف الصورة لديك -->
-                        <img src="app-screen.png" alt="تطبيق Kilix للبحث" class="phone-img" loading="lazy" width="320" height="600" onerror="this.src='https://via.placeholder.com/320x600/0f172a/ffffff?text=Kilix+App+Screen'">
-                        <div class="floating-search-card" aria-label="البحث بواسطة الكاميرا">
+                        <img src="app-screen.png" alt="تطبيق Kilix للبحث" class="phone-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/320x600/0b1b3d/ffffff?text=Kilix+App+Screen';">
+                        <div class="floating-camera-btn" aria-label="البحث بواسطة الكاميرا">
                             <i class="fa-solid fa-camera"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- بطاقات الميزات الأربع -->
             <div class="features-cards-grid">
                 
                 <div class="card-item">
@@ -158,7 +157,7 @@
                     </div>
                     <h3>ابحث بالاسم أو الصورة</h3>
                     <p>لقَ المنتج الذي تحتاجه بسهولة، حتى من خلال صورة المنتج.</p>
-                    <a href="#" class="card-link" aria-label="معرفة المزيد"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
                 </div>
 
                 <div class="card-item">
@@ -167,7 +166,7 @@
                     </div>
                     <h3>قارن أسعار الموردين</h3>
                     <p>شوف عروض وأسعار مختلفة لنفس المنتج قبل ما تختار.</p>
-                    <a href="#" class="card-link" aria-label="معرفة المزيد"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
                 </div>
 
                 <div class="card-item">
@@ -176,7 +175,7 @@
                     </div>
                     <h3>اكتشف موردين جدد</h3>
                     <p>وسّع خياراتك وتعرّف على موردين ومنتجات جديدة في مكان واحد.</p>
-                    <a href="#" class="card-link" aria-label="معرفة المزيد"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
                 </div>
 
                 <div class="card-item">
@@ -185,11 +184,12 @@
                     </div>
                     <h3>اطلب مباشرة من هاتفك</h3>
                     <p>اختر المنتج، حدّد الكمية، وأرسل طلبك بسهولة.</p>
-                    <a href="#" class="card-link" aria-label="معرفة المزيد"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
                 </div>
 
             </div>
 
+            <!-- شريط التوصيل والدفع -->
             <div class="trust-banner">
                 <div class="trust-item">
                     <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -211,7 +211,7 @@
         </div>
     </section>
 
-    <!-- قسم الدعوة للتحميل السفلي CTA -->
+    <!-- قسم الدعوة للتحميل CTA -->
     <section class="bottom-cta">
         <div class="container cta-content">
             <h2>جاهز لتطوير تجارتك مع <span class="highlight">Kilix</span>؟</h2>
@@ -237,5 +237,4 @@
 
     <script src="script.js"></script>
 </body>
-                                                                                </html>
-                                                                                
+</html>
