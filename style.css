@@ -10,7 +10,6 @@
    ========================================================= */
 
 :root {
-
     --orange: #ff6500;
     --orange-dark: #e95400;
     --orange-soft: #fff0e6;
@@ -27,19 +26,12 @@
 
     --border: rgba(24, 55, 92, 0.10);
 
-    --shadow-phone:
-        0 35px 70px rgba(24, 55, 92, 0.18);
-
-    --shadow-button:
-        0 12px 28px rgba(255, 101, 0, 0.24);
-
-    --shadow-soft:
-        0 10px 30px rgba(24, 55, 92, 0.08);
+    --shadow-button: 0 12px 28px rgba(255, 101, 0, 0.24);
+    --shadow-soft: 0 10px 30px rgba(24, 55, 92, 0.08);
 
     --radius-pill: 999px;
 
-    --transition:
-        0.35s cubic-bezier(.16, 1, .3, 1);
+    --transition: 0.35s cubic-bezier(.16, 1, .3, 1);
 }
 
 
@@ -60,7 +52,6 @@ html {
 }
 
 body {
-
     font-family: "Tajawal", sans-serif;
 
     background:
@@ -72,7 +63,6 @@ body {
         var(--background);
 
     color: var(--text);
-
     direction: rtl;
 
     overflow-x: hidden;
@@ -80,7 +70,6 @@ body {
     line-height: 1.6;
 
     -webkit-font-smoothing: antialiased;
-
     text-rendering: optimizeLegibility;
 }
 
@@ -110,13 +99,7 @@ img {
 }
 
 .container {
-
-    width:
-        min(
-            calc(100% - 40px),
-            1180px
-        );
-
+    width: min(calc(100% - 40px), 1180px);
     margin-inline: auto;
 }
 
@@ -126,9 +109,7 @@ img {
    ========================================================= */
 
 .page-decoration {
-
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
@@ -139,74 +120,55 @@ img {
 }
 
 .orange-shape {
-
     position: absolute;
-
     background: var(--orange);
-
     opacity: 0.09;
 }
 
 .orange-shape-top {
-
     width: 390px;
-
     height: 260px;
 
     top: -205px;
-
     right: -120px;
 
     border-radius: 50%;
 }
 
 .orange-shape-side {
-
     width: 180px;
-
     height: 520px;
 
     right: -130px;
-
     top: 38%;
 
-    border-radius:
-        100px 0 0 100px;
+    border-radius: 100px 0 0 100px;
 
-    transform:
-        rotate(-18deg);
+    transform: rotate(-18deg);
 }
 
 .orange-line {
-
     position: absolute;
 
     width: 55px;
-
     height: 8px;
 
     background: var(--orange);
 
-    border-radius:
-        var(--radius-pill);
+    border-radius: var(--radius-pill);
 
     opacity: 0.85;
 
-    transform:
-        rotate(-35deg);
+    transform: rotate(-35deg);
 }
 
 .orange-line-1 {
-
     top: 145px;
-
     right: 7%;
 }
 
 .orange-line-2 {
-
     top: 168px;
-
     right: 4.5%;
 
     width: 30px;
@@ -218,14 +180,17 @@ img {
    ========================================================= */
 
 .navbar {
-
     position: sticky;
 
     top: 0;
 
     width: 100%;
 
-    z-index: 1000;
+    /*
+       مهم:
+       نخلي الـNavbar فوق كل عناصر الصفحة
+    */
+    z-index: 10000;
 
     background:
         rgba(255, 250, 247, 0.94);
@@ -241,12 +206,10 @@ img {
 }
 
 .nav-container {
-
-    width:
-        min(
-            calc(100% - 40px),
-            1180px
-        );
+    width: min(
+        calc(100% - 40px),
+        1180px
+    );
 
     min-height: 82px;
 
@@ -258,6 +221,15 @@ img {
         1fr auto 1fr;
 
     align-items: center;
+
+    /*
+       تأكيد اتجاه RTL داخل الـGrid
+    */
+    direction: rtl;
+
+    position: relative;
+
+    z-index: 10001;
 }
 
 
@@ -266,7 +238,6 @@ img {
    ========================================================= */
 
 .logo {
-
     grid-column: 2;
 
     font-size: 2.55rem;
@@ -281,6 +252,10 @@ img {
 
     transition:
         transform var(--transition);
+
+    position: relative;
+
+    z-index: 10002;
 }
 
 .logo:hover {
@@ -297,25 +272,39 @@ img {
 
 
 /* =========================================================
-   MENU
+   MENU WRAPPER
    ========================================================= */
 
 .menu-wrapper {
 
+    /*
+       في RTL:
+       grid-column: 1 = الجهة اليمنى
+    */
     grid-column: 1;
 
     justify-self: start;
 
     position: relative;
 
-    z-index: 1005;
+    /*
+       أعلى من كل شيء داخل الـNavbar
+    */
+    z-index: 10010;
+
+    pointer-events: auto;
 }
 
 
+/* =========================================================
+   MENU BUTTON
+   ========================================================= */
+
 .menu-toggle {
 
-    width: 48px;
+    position: relative;
 
+    width: 48px;
     height: 48px;
 
     border: 0;
@@ -334,12 +323,31 @@ img {
 
     padding: 10px;
 
+    margin: 0;
+
     color: var(--navy);
 
-    z-index: 1002;
+    /*
+       مهم جدًا للضغط
+    */
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    touch-action: manipulation;
+
+    z-index: 10020;
 
     transition:
         transform var(--transition);
+}
+
+.menu-toggle:hover {
+    transform: scale(1.04);
+}
+
+.menu-toggle:active {
+    transform: scale(0.95);
 }
 
 .menu-toggle span {
@@ -347,12 +355,13 @@ img {
     display: block;
 
     width: 28px;
-
     height: 3px;
 
     background: var(--navy);
 
     border-radius: 10px;
+
+    pointer-events: none;
 
     transition:
         transform var(--transition),
@@ -361,7 +370,9 @@ img {
 }
 
 
-/* X عند فتح القائمة */
+/* =========================================================
+   X WHEN OPEN
+   ========================================================= */
 
 .menu-toggle.active span:nth-child(1) {
 
@@ -393,6 +404,9 @@ img {
 
     top: calc(100% + 12px);
 
+    /*
+       في RTL، القائمة تبدأ من جهة اليمين
+    */
     right: 0;
 
     width: 215px;
@@ -421,6 +435,8 @@ img {
 
     transform-origin: top right;
 
+    z-index: 10030;
+
     transition:
         opacity var(--transition),
         visibility var(--transition),
@@ -428,7 +444,9 @@ img {
 }
 
 
-/* القائمة مفتوحة */
+/* =========================================================
+   MENU OPEN
+   ========================================================= */
 
 .menu-wrapper.open .menu-dropdown {
 
@@ -444,7 +462,9 @@ img {
 }
 
 
-/* عناصر القائمة */
+/* =========================================================
+   MENU LINKS
+   ========================================================= */
 
 .menu-dropdown a {
 
@@ -474,9 +494,6 @@ img {
         transform var(--transition);
 }
 
-
-/* Hover */
-
 .menu-dropdown a:hover {
 
     background:
@@ -488,9 +505,6 @@ img {
     transform:
         translateX(-3px);
 }
-
-
-/* أيقونات القائمة */
 
 .menu-dropdown a i {
 
@@ -545,6 +559,10 @@ img {
 
     white-space:
         nowrap;
+
+    position: relative;
+
+    z-index: 10002;
 
     box-shadow:
         0 8px 20px rgba(255, 101, 0, 0.18);
@@ -1281,7 +1299,6 @@ img {
 .footer-icon {
 
     width: 35px;
-
     height: 35px;
 
     display: flex;
@@ -1346,7 +1363,7 @@ img {
 
 
 /* =========================================================
-   10. REVEAL ANIMATION
+   10. SCROLL REVEAL
    ========================================================= */
 
 .reveal-element {
@@ -1371,7 +1388,7 @@ img {
 
 
 /* =========================================================
-   11. RESPONSIVE — TABLET
+   11. TABLET
    ========================================================= */
 
 @media (max-width: 992px) {
@@ -1383,8 +1400,7 @@ img {
 
     .hero {
 
-        min-height:
-            auto;
+        min-height: auto;
 
         padding:
             65px 0 45px;
@@ -1401,32 +1417,25 @@ img {
 
     .hero-content {
 
-        max-width:
-            650px;
+        max-width: 650px;
 
-        margin-inline:
-            auto;
+        margin-inline: auto;
 
-        text-align:
-            center;
+        text-align: center;
     }
 
     .badge {
 
-        margin-inline:
-            auto;
+        margin-inline: auto;
     }
 
     .hero-title {
 
-        align-items:
-            center;
+        align-items: center;
 
-        margin-inline:
-            auto;
+        margin-inline: auto;
 
-        text-align:
-            center;
+        text-align: center;
     }
 
     .title-underline {
@@ -1437,23 +1446,19 @@ img {
 
     .hero-description {
 
-        margin-inline:
-            auto;
+        margin-inline: auto;
     }
 
     .cta-buttons {
 
-        margin-inline:
-            auto;
+        margin-inline: auto;
     }
 
     .platform-availability {
 
-        justify-content:
-            center;
+        justify-content: center;
 
-        padding-right:
-            0;
+        padding-right: 0;
     }
 
     .features-grid {
@@ -1464,35 +1469,29 @@ img {
 
     .footer-container {
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        align-items:
-            center;
+        align-items: center;
 
-        text-align:
-            center;
+        text-align: center;
 
-        gap:
-            28px;
+        gap: 28px;
     }
 
     .footer-brand {
 
-        text-align:
-            center;
+        text-align: center;
     }
 
     .footer-contact {
 
-        justify-content:
-            center;
+        justify-content: center;
     }
 }
 
 
 /* =========================================================
-   12. RESPONSIVE — MOBILE
+   12. MOBILE
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -1504,15 +1503,14 @@ img {
     }
 
 
-    /* Navbar */
+    /* NAVBAR */
 
     .nav-container {
 
         width:
             calc(100% - 24px);
 
-        min-height:
-            68px;
+        min-height: 68px;
     }
 
     .logo {
@@ -1523,32 +1521,26 @@ img {
 
     .menu-toggle {
 
-        width:
-            44px;
+        width: 44px;
 
-        height:
-            44px;
+        height: 44px;
     }
 
     .menu-toggle span {
 
-        width:
-            25px;
+        width: 25px;
 
-        height:
-            3px;
+        height: 3px;
     }
 
     .btn-download-nav {
 
-        min-width:
-            auto;
+        min-width: auto;
 
         padding:
             10px 13px;
 
-        gap:
-            6px;
+        gap: 6px;
 
         font-size:
             0.78rem;
@@ -1561,18 +1553,16 @@ img {
     }
 
 
-    /* Menu */
+    /* MENU */
 
     .menu-dropdown {
 
-        width:
-            195px;
+        width: 195px;
 
         top:
             calc(100% + 9px);
 
-        right:
-            -4px;
+        right: -4px;
 
         border-radius:
             16px;
@@ -1591,7 +1581,7 @@ img {
     }
 
 
-    /* Hero */
+    /* HERO */
 
     .hero {
 
@@ -1610,8 +1600,7 @@ img {
         padding:
             8px 13px;
 
-        gap:
-            7px;
+        gap: 7px;
 
         font-size:
             0.78rem;
@@ -1660,9 +1649,6 @@ img {
             25px;
     }
 
-
-    /* CTA */
-
     .cta-buttons {
 
         width:
@@ -1691,7 +1677,7 @@ img {
     }
 
 
-    /* Features */
+    /* FEATURES */
 
     .features {
 
@@ -1745,7 +1731,7 @@ img {
     }
 
 
-    /* Decoration */
+    /* BOTTOM */
 
     .bottom-decoration {
 
@@ -1772,7 +1758,7 @@ img {
     }
 
 
-    /* Footer */
+    /* FOOTER */
 
     .site-footer {
 
@@ -1920,7 +1906,7 @@ img {
 
 
 /* =========================================================
-   14. ACCESSIBILITY — REDUCE MOTION
+   14. REDUCE MOTION
    ========================================================= */
 
 .reduce-motion *,
