@@ -6,14 +6,14 @@
     --primary-orange-hover: #E04B00;
     --navy-blue: #0B1B3D;
     --navy-blue-light: #162B56;
-    --bg-light: #F8FAFC;
+    --bg-light: #FAF9F6;
     --text-dark: #0F172A;
     --text-muted: #64748B;
     --white: #FFFFFF;
-    --border-color: rgba(15, 23, 42, 0.08);
-    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 10px 25px -5px rgba(11, 27, 61, 0.08);
-    --shadow-lg: 0 20px 35px -10px rgba(255, 85, 0, 0.18);
+    --border-color: rgba(11, 27, 61, 0.08);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 15px 30px -5px rgba(11, 27, 61, 0.12);
+    --shadow-lg: 0 20px 35px -10px rgba(255, 85, 0, 0.2);
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
@@ -75,22 +75,22 @@ img {
 .circle {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(90px);
     opacity: 0.12;
     animation: float 18s infinite ease-in-out alternate;
 }
 
 .circle-1 {
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     background: var(--primary-orange);
     top: -100px;
     right: -100px;
 }
 
 .circle-2 {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     background: var(--navy-blue);
     bottom: -150px;
     left: -100px;
@@ -109,7 +109,7 @@ img {
     position: sticky;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
@@ -133,22 +133,22 @@ img {
 .logo-blue { color: var(--navy-blue); }
 
 .btn-download-nav {
-    background: var(--navy-blue);
+    background: var(--primary-orange);
     color: var(--white);
     padding: 10px 22px;
-    border-radius: var(--radius-sm);
+    border-radius: 50px;
     font-weight: 700;
     font-size: 0.95rem;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(255, 85, 0, 0.25);
 }
 
 .btn-download-nav:hover {
-    background: var(--navy-blue-light);
+    background: var(--primary-orange-hover);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
 }
 
 .menu-toggle {
@@ -159,10 +159,8 @@ img {
     color: var(--navy-blue);
     cursor: pointer;
     z-index: 1001;
-    transition: var(--transition);
 }
 
-/* طبقة القائمة الجانبية للهواتف (Mobile Nav Overlay) */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -183,16 +181,16 @@ img {
 }
 
 /* ==========================================================================
-   4. القسم الرئيسي (Hero Section)
+   4. القسم الرئيسي (Hero Section) - الهاتف بجانب الكلام
    ========================================================================== */
 .hero {
-    padding: 70px 0 60px;
+    padding: 50px 0 30px;
     position: relative;
 }
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr 1fr; /* تقسيم الصفحة بالتساوي: كلام يمين وهاتف يسار */
     gap: 40px;
     align-items: center;
 }
@@ -201,20 +199,23 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 85, 0, 0.08);
+    background: #FFEFE6;
     color: var(--primary-orange);
-    padding: 6px 16px;
+    padding: 8px 18px;
     border-radius: 50px;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 85, 0, 0.15);
+    margin-bottom: 24px;
+}
+
+.badge i {
+    font-size: 1rem;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 900;
-    line-height: 1.25;
+    line-height: 1.2;
     color: var(--navy-blue);
     margin-bottom: 20px;
 }
@@ -227,7 +228,8 @@ img {
     font-size: 1.15rem;
     color: var(--text-muted);
     margin-bottom: 32px;
-    max-width: 520px;
+    max-width: 480px;
+    line-height: 1.7;
 }
 
 .cta-buttons {
@@ -240,9 +242,9 @@ img {
 
 .btn {
     padding: 14px 28px;
-    border-radius: var(--radius-md);
+    border-radius: 50px;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.05rem;
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -265,12 +267,12 @@ img {
 .btn-secondary {
     background: var(--white);
     color: var(--navy-blue);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid rgba(11, 27, 61, 0.2);
     box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-light);
+    background: #F1F5F9;
     transform: translateY(-3px);
 }
 
@@ -278,12 +280,14 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.88rem;
-    color: var(--text-muted);
+    font-size: 0.9rem;
+    color: var(--navy-blue);
+    font-weight: 600;
 }
 
-.platform-availability .divider {
-    color: var(--border-color);
+.platform-availability .muted {
+    color: var(--text-muted);
+    font-weight: 400;
 }
 
 .hero-image {
@@ -294,62 +298,63 @@ img {
 
 .phone-wrapper {
     position: relative;
-    max-width: 290px;
+    max-width: 320px;
+    width: 100%;
 }
 
 .phone-img {
-    border-radius: 36px;
+    width: 100%;
+    border-radius: 40px;
     box-shadow: var(--shadow-md);
-    border: 6px solid var(--navy-blue);
+    border: 8px solid var(--navy-blue);
     transition: transform 0.2s ease-out;
 }
 
 /* ==========================================================================
-   5. قسم الميزات الأفقية السريعة (Features Grid)
+   5. قسم الميزات الأفقية السريعة (تأتي أسفل الصورة والنصوص مباشرة)
    ========================================================================== */
 .features {
-    padding: 30px 0 50px;
+    padding: 40px 0 60px;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 0; /* تحكم الخطوط الفاصلة بين العناصر */
+    background: transparent;
 }
 
 .feature-card {
-    background: var(--white);
-    padding: 24px 16px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
+    background: transparent;
+    padding: 20px 15px;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    border-left: 1px solid rgba(11, 27, 61, 0.1); /* خط فاصل عمودي */
     transition: var(--transition);
 }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(255, 85, 0, 0.3);
+.feature-card:last-child {
+    border-left: none; /* إزالة الخط عن آخر عنصر من اليسار */
 }
 
 .icon-wrapper {
-    width: 56px;
-    height: 56px;
-    background: rgba(255, 85, 0, 0.1);
+    width: 68px;
+    height: 68px;
+    background: #FFEFE6;
     color: var(--primary-orange);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin: 0 auto 16px;
+    border: 1px solid rgba(255, 85, 0, 0.1);
 }
 
 .feature-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    font-weight: 800;
     color: var(--navy-blue);
+    line-height: 1.4;
 }
 
 /* ==========================================================================
@@ -368,7 +373,7 @@ img {
 }
 
 .section-title {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: var(--navy-blue);
     margin-bottom: 16px;
@@ -533,8 +538,11 @@ img {
     color: var(--navy-blue);
     border: 1px solid var(--border-color);
     padding: 12px 24px;
-    border-radius: var(--radius-md);
+    border-radius: 50px;
     box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .btn-appstore:hover {
@@ -572,31 +580,44 @@ img {
 /* ==========================================================================
    9. التجاوب مع الشاشات المختلفة (Responsive Web Design)
    ========================================================================== */
-@media (max-width: 1024px) {
-    .hero-title { font-size: 2.4rem; }
-    .features-grid, .features-cards-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 992px) {
+    .hero-container, .why-us-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-buttons, .platform-availability {
+        justify-content: center;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .feature-card {
+        border-left: none;
+        border-bottom: 1px solid rgba(11, 27, 61, 0.1);
+        padding-bottom: 24px;
+    }
+
+    .features-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     
-    .nav-container {
-        position: relative;
-    }
-
     .btn-download-nav {
-        display: none; /* إخفاء الزر العلوي في الشاشات الصغيرة لتوفير المساحة */
+        display: none;
     }
 
-    .hero-container, .why-us-hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .hero-description { margin: 0 auto 32px; }
-    .cta-buttons { justify-content: center; }
-    .platform-availability { justify-content: center; }
-    
     .trust-banner {
         flex-direction: column;
         gap: 24px;
@@ -608,8 +629,9 @@ img {
 }
 
 @media (max-width: 480px) {
-    .hero-title { font-size: 1.9rem; }
+    .hero-title { font-size: 2.2rem; }
     .features-grid, .features-cards-grid { grid-template-columns: 1fr; }
+    .feature-card { border-bottom: 1px solid rgba(11, 27, 61, 0.1); }
     .cta-buttons { flex-direction: column; width: 100%; }
     .btn { width: 100%; justify-content: center; }
 }
