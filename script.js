@@ -10,24 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuToggle && menuWrapper && menuDropdown) {
 
-        menuToggle.addEventListener("click", function (event) {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const isOpen = menuWrapper.classList.contains("open");
-
-            if (isOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-
-        });
-
-
         function openMenu() {
-
             menuWrapper.classList.add("open");
             menuToggle.classList.add("active");
 
@@ -35,12 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "aria-expanded",
                 "true"
             );
-
         }
 
-
         function closeMenu() {
-
             menuWrapper.classList.remove("open");
             menuToggle.classList.remove("active");
 
@@ -48,8 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 "aria-expanded",
                 "false"
             );
-
         }
+
+        menuToggle.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (menuWrapper.classList.contains("open")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+
+        });
 
 
         /* إغلاق عند الضغط خارج القائمة */
@@ -63,12 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* إغلاق بعد اختيار عنصر من القائمة */
+        /* إغلاق بعد اختيار عنصر */
 
-        const menuLinks =
-            menuDropdown.querySelectorAll("a");
-
-        menuLinks.forEach(function (link) {
+        menuDropdown.querySelectorAll("a").forEach(function (link) {
 
             link.addEventListener("click", function () {
                 closeMenu();
@@ -94,20 +83,16 @@ document.addEventListener("DOMContentLoaded", function () {
        2. SMOOTH SCROLL
     ========================================== */
 
-    const internalLinks =
-        document.querySelectorAll(
-            'a[href^="#"]:not([href="#"])'
-        );
+    const internalLinks = document.querySelectorAll(
+        'a[href^="#"]:not([href="#"])'
+    );
 
     internalLinks.forEach(function (link) {
 
         link.addEventListener("click", function (event) {
 
-            const targetId =
-                link.getAttribute("href");
-
-            const target =
-                document.querySelector(targetId);
+            const targetId = link.getAttribute("href");
+            const target = document.querySelector(targetId);
 
             if (!target) {
                 return;
@@ -115,8 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.preventDefault();
 
-            const header =
-                document.querySelector(".navbar");
+            const header = document.querySelector(".navbar");
 
             const headerHeight =
                 header ? header.offsetHeight : 0;
@@ -140,63 +124,51 @@ document.addEventListener("DOMContentLoaded", function () {
        3. SCROLL REVEAL
     ========================================== */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".hero-content, .feature-card"
-        );
+    const revealElements = document.querySelectorAll(
+        ".hero-content, .feature-card"
+    );
 
     if ("IntersectionObserver" in window) {
 
-        const observer =
-            new IntersectionObserver(
-                function (entries, observer) {
+        const observer = new IntersectionObserver(
+            function (entries, observer) {
 
-                    entries.forEach(function (entry) {
+                entries.forEach(function (entry) {
 
-                        if (!entry.isIntersecting) {
-                            return;
-                        }
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
-                        entry.target.classList.add(
-                            "is-visible"
-                        );
+                    entry.target.classList.add("is-visible");
 
-                        observer.unobserve(
-                            entry.target
-                        );
+                    observer.unobserve(entry.target);
 
-                    });
+                });
 
-                },
-                {
-                    threshold: 0.1,
-                    rootMargin: "0px 0px -30px 0px"
-                }
-            );
-
-
-        revealElements.forEach(
-            function (element, index) {
-
-                element.style.transitionDelay =
-                    (index * 0.08) + "s";
-
-                element.classList.add(
-                    "reveal-element"
-                );
-
-                observer.observe(element);
-
+            },
+            {
+                threshold: 0.1,
+                rootMargin: "0px 0px -30px 0px"
             }
         );
+
+
+        revealElements.forEach(function (element, index) {
+
+            element.style.transitionDelay =
+                (index * 0.08) + "s";
+
+            element.classList.add("reveal-element");
+
+            observer.observe(element);
+
+        });
 
     } else {
 
         revealElements.forEach(function (element) {
 
-            element.classList.add(
-                "is-visible"
-            );
+            element.classList.add("is-visible");
 
         });
 
@@ -207,10 +179,9 @@ document.addEventListener("DOMContentLoaded", function () {
        4. REDUCE MOTION
     ========================================== */
 
-    const prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     if (prefersReducedMotion) {
 
