@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetElement = document.querySelector(href);
                 
                 // إغلاق القائمة الجانبية في حال كانت مفتوحة
-                if (navContainer.classList.contains('menu-open')) {
+                if (navContainer && navContainer.classList.contains('menu-open')) {
                     toggleMenu();
                 }
 
@@ -93,21 +93,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 4. تأثير Parallax الخفيف على صور الهاتف في خلفية الصفحة
+    // 4. تأثير Parallax الخفيف على حاوية صور الهاتف (فقط للشاشات الكبيرة)
     // -------------------------------------------------------------
-    const phoneImages = document.querySelectorAll('.phone-img');
+    const phoneWrappers = document.querySelectorAll('.phone-wrapper');
     
     window.addEventListener('mousemove', (e) => {
-        const { clientX, clientY } = e;
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-        
-        const moveX = (clientX - centerX) / 50;
-        const moveY = (clientY - centerY) / 50;
+        // تشغيل التأثير فقط إذا كان عرض الشاشة أكبر من 992px لمنع التقطيع في الهواتف
+        if (window.innerWidth > 992) {
+            const { clientX, clientY } = e;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            const moveX = (clientX - centerX) / 60;
+            const moveY = (clientY - centerY) / 60;
 
-        phoneImages.forEach(img => {
-            img.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-        });
+            phoneWrappers.forEach(wrapper => {
+                wrapper.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+            });
+        }
     });
 
 });
+                              
