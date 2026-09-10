@@ -1,77 +1,89 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================================
        1. MENU
-       ========================================= */
+    ========================================== */
 
     const menuToggle = document.getElementById("menuToggle");
     const menuWrapper = document.querySelector(".menu-wrapper");
+    const menuDropdown = document.getElementById("menuDropdown");
 
-    if (menuToggle && menuWrapper) {
+    if (menuToggle && menuWrapper && menuDropdown) {
 
-        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.addEventListener("click", function (event) {
 
-        menuToggle.addEventListener("click", event => {
-
+            event.preventDefault();
             event.stopPropagation();
 
-            const isOpen =
-                menuWrapper.classList.toggle("open");
+            const isOpen = menuWrapper.classList.contains("open");
 
-            menuToggle.classList.toggle(
-                "active",
-                isOpen
-            );
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-        });
-
-
-        /* Close when clicking outside */
-
-        document.addEventListener("click", event => {
-
-            if (!menuWrapper.contains(event.target)) {
-
-                menuWrapper.classList.remove("open");
-
-                menuToggle.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
             }
 
         });
 
 
-        /* Close after selecting an option */
+        function openMenu() {
 
-        const menuLinks =
-            menuWrapper.querySelectorAll(
-                ".menu-dropdown a"
+            menuWrapper.classList.add("open");
+            menuToggle.classList.add("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "true"
             );
 
-        menuLinks.forEach(link => {
+        }
 
-            link.addEventListener("click", () => {
 
-                menuWrapper.classList.remove("open");
+        function closeMenu() {
 
-                menuToggle.classList.remove("active");
+            menuWrapper.classList.remove("open");
+            menuToggle.classList.remove("active");
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
+        }
+
+
+        /* إغلاق عند الضغط خارج القائمة */
+
+        document.addEventListener("click", function (event) {
+
+            if (!menuWrapper.contains(event.target)) {
+                closeMenu();
+            }
+
+        });
+
+
+        /* إغلاق بعد اختيار عنصر من القائمة */
+
+        const menuLinks =
+            menuDropdown.querySelectorAll("a");
+
+        menuLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+                closeMenu();
             });
+
+        });
+
+
+        /* إغلاق بزر Escape */
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+                closeMenu();
+            }
 
         });
 
@@ -80,15 +92,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
        2. SMOOTH SCROLL
-       ========================================= */
+    ========================================== */
 
-    const internalLinks = document.querySelectorAll(
-        'a[href^="#"]:not([href="#"])'
-    );
+    const internalLinks =
+        document.querySelectorAll(
+            'a[href^="#"]:not([href="#"])'
+        );
 
-    internalLinks.forEach(link => {
+    internalLinks.forEach(function (link) {
 
-        link.addEventListener("click", event => {
+        link.addEventListener("click", function (event) {
 
             const targetId =
                 link.getAttribute("href");
@@ -96,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const target =
                 document.querySelector(targetId);
 
-            if (!target) return;
+            if (!target) {
+                return;
+            }
 
             event.preventDefault();
 
@@ -104,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector(".navbar");
 
             const headerHeight =
-                header
-                    ? header.offsetHeight
-                    : 0;
+                header ? header.offsetHeight : 0;
 
             const targetPosition =
                 target.getBoundingClientRect().top +
@@ -125,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
        3. SCROLL REVEAL
-       ========================================= */
+    ========================================== */
 
     const revealElements =
         document.querySelectorAll(
@@ -136,9 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const observer =
             new IntersectionObserver(
-                (entries, observer) => {
+                function (entries, observer) {
 
-                    entries.forEach(entry => {
+                    entries.forEach(function (entry) {
 
                         if (!entry.isIntersecting) {
                             return;
@@ -157,17 +170,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     threshold: 0.1,
-                    rootMargin:
-                        "0px 0px -30px 0px"
+                    rootMargin: "0px 0px -30px 0px"
                 }
             );
 
 
         revealElements.forEach(
-            (element, index) => {
+            function (element, index) {
 
                 element.style.transitionDelay =
-                    `${index * 0.08}s`;
+                    (index * 0.08) + "s";
 
                 element.classList.add(
                     "reveal-element"
@@ -180,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-        revealElements.forEach(element => {
+        revealElements.forEach(function (element) {
 
             element.classList.add(
                 "is-visible"
@@ -193,8 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
        4. REDUCE MOTION
-       Accessibility
-       ========================================= */
+    ========================================== */
 
     const prefersReducedMotion =
         window.matchMedia(
