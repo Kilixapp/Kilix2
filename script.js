@@ -26,13 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.addEventListener('click', toggleMenu);
     }
 
-    // إغلاق القائمة تلقائياً إذا قام المستخدم بتكبير الشاشة فوق 768px
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navContainer && navContainer.classList.contains('menu-open')) {
-            toggleMenu();
-        }
-    });
-
     // -------------------------------------------------------------
     // 2. التمرير السلس وإغلاق القائمة عند النقر على الروابط
     // -------------------------------------------------------------
@@ -66,52 +59,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 3. إضافة تأثير الحركة الذكية للعناصر عند التمرير (Scroll Animations)
+    // 3. تحريك العناصر تدريجياً عند التمرير (Staggered Scroll Animation)
     // -------------------------------------------------------------
-    const animatedElements = document.querySelectorAll('.feature-card, .card-item, .trust-banner, .phone-wrapper');
-    
-    // إعداد القيم الأولية عبر الـ JS أو يمكن نقلها لملف الـ CSS لتكون أطهر
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    });
-
     const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
     };
 
-    const animateOnScroll = new IntersectionObserver((entries, observer) => {
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // تطبيق الحركة مباشرة عند ظهور العنصر بكفاءة عالية
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target); // تشغيل الحركة مرة واحدة فقط
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // إيقاف المراقبة بعد الظهور للحفاظ على الأداء
             }
         });
     }, observerOptions);
 
-    animatedElements.forEach(el => {
-        animateOnScroll.observe(el);
+    // تطبيق التأثير وتحديد التأخير التدريجي للبطاقات المتقاربة
+    const gridContainers = document.querySelectorAll('.features-grid, .features-cards-grid');
+    gridContainers.forEach(grid => {
+        Array.from(grid.children).forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.15}s`;
+        });
+    });
+
+    const elementsToAnimate = document.querySelectorAll(
+        '.card-item, .trust-banner, .feature-card, .hero-content, .why-us-visual, .hero-image'
+    );
+    
+    elementsToAnimate.forEach(el => {
+        el.classList.add('reveal-element');
+        revealOnScroll.observe(el);
     });
 
     // -------------------------------------------------------------
-    // 4. تحسين استجابة الهيدر مع التمرير (Sticky Header Elevation)
+    // 4. تأثير Parallax الخفيف والمحسّن أداءً على صور الهاتف
     // -------------------------------------------------------------
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-            } else {
-                navbar.style.boxShadow = 'none';
-            }
-        });
-    }
+    const phoneWrappers = document.querySelectorAll('.phone-wrapper');
+    let ticking = false;
+
+    window.addEventListener('mousemove', (e) => {
+        // تشغيل التأثير فقط للشاشات الأكبر من 992px
+        if (window.innerWidth > 992 && !ticking) {
+            window.requestAnimationFrame(() => {
+                const { clientX, clientY } = e;
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                
+                const moveX = (clientX - centerX) / 60;
+                const moveY = (clientY - centerY) / 60;
+
+                phoneWrappers.forEach(wrapper => {
+                    wrapper.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+                });
+
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+
+    // إعادة الهاتف لمكانه الأصلي بنعومة عند خروج الماوس من النافذة
+    document.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 992) {
+            phoneWrappers.forEach(wrapper => {
+                wrapper.style.transform = `translate3d(0, 0, 0)`;
+            });
+        }
+    });
 
 });
-    
+                        
