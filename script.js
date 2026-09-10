@@ -1,37 +1,86 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
-       1. MOBILE MENU
-    ========================================= */
+       1. MENU
+       ========================================= */
 
     const menuToggle = document.getElementById("menuToggle");
-    const navContainer = document.querySelector(".nav-container");
+    const menuWrapper = document.querySelector(".menu-wrapper");
 
-    if (menuToggle && navContainer) {
+    if (menuToggle && menuWrapper) {
 
         menuToggle.setAttribute("aria-expanded", "false");
 
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", event => {
 
-            const isOpen = navContainer.classList.toggle("menu-open");
+            event.stopPropagation();
 
-            menuToggle.classList.toggle("active", isOpen);
+            const isOpen =
+                menuWrapper.classList.toggle("open");
+
+            menuToggle.classList.toggle(
+                "active",
+                isOpen
+            );
 
             menuToggle.setAttribute(
                 "aria-expanded",
                 String(isOpen)
             );
 
-            document.body.style.overflow = isOpen
-                ? "hidden"
-                : "";
         });
+
+
+        /* Close when clicking outside */
+
+        document.addEventListener("click", event => {
+
+            if (!menuWrapper.contains(event.target)) {
+
+                menuWrapper.classList.remove("open");
+
+                menuToggle.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        });
+
+
+        /* Close after selecting an option */
+
+        const menuLinks =
+            menuWrapper.querySelectorAll(
+                ".menu-dropdown a"
+            );
+
+        menuLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menuWrapper.classList.remove("open");
+
+                menuToggle.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
     }
 
 
     /* =========================================
        2. SMOOTH SCROLL
-    ========================================= */
+       ========================================= */
 
     const internalLinks = document.querySelectorAll(
         'a[href^="#"]:not([href="#"])'
@@ -41,18 +90,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         link.addEventListener("click", event => {
 
-            const targetId = link.getAttribute("href");
-            const target = document.querySelector(targetId);
+            const targetId =
+                link.getAttribute("href");
+
+            const target =
+                document.querySelector(targetId);
 
             if (!target) return;
 
             event.preventDefault();
 
-            const header = document.querySelector(".navbar");
+            const header =
+                document.querySelector(".navbar");
 
-            const headerHeight = header
-                ? header.offsetHeight
-                : 0;
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 0;
 
             const targetPosition =
                 target.getBoundingClientRect().top +
@@ -64,26 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 behavior: "smooth"
             });
 
-
-            /* Close mobile menu */
-
-            if (
-                navContainer &&
-                navContainer.classList.contains("menu-open")
-            ) {
-
-                navContainer.classList.remove("menu-open");
-
-                menuToggle?.classList.remove("active");
-
-                menuToggle?.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                document.body.style.overflow = "";
-            }
-
         });
 
     });
@@ -91,143 +125,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
        3. SCROLL REVEAL
-    ========================================= */
+       ========================================= */
 
-    const revealElements = document.querySelectorAll(
-        ".hero-content, .hero-image, .feature-card"
-    );
+    const revealElements =
+        document.querySelectorAll(
+            ".hero-content, .feature-card"
+        );
 
     if ("IntersectionObserver" in window) {
 
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
+        const observer =
+            new IntersectionObserver(
+                (entries, observer) => {
 
-                entries.forEach(entry => {
+                    entries.forEach(entry => {
 
-                    if (!entry.isIntersecting) return;
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
 
-                    entry.target.classList.add("is-visible");
+                        entry.target.classList.add(
+                            "is-visible"
+                        );
 
-                    observer.unobserve(entry.target);
+                        observer.unobserve(
+                            entry.target
+                        );
 
-                });
+                    });
 
-            },
-            {
-                threshold: 0.1,
-                rootMargin: "0px 0px -30px 0px"
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin:
+                        "0px 0px -30px 0px"
+                }
+            );
+
+
+        revealElements.forEach(
+            (element, index) => {
+
+                element.style.transitionDelay =
+                    `${index * 0.08}s`;
+
+                element.classList.add(
+                    "reveal-element"
+                );
+
+                observer.observe(element);
+
             }
         );
-
-
-        revealElements.forEach((element, index) => {
-
-            element.style.transitionDelay =
-                `${index * 0.08}s`;
-
-            element.classList.add("reveal-element");
-
-            observer.observe(element);
-
-        });
 
     } else {
 
         revealElements.forEach(element => {
-            element.classList.add("is-visible");
+
+            element.classList.add(
+                "is-visible"
+            );
+
         });
 
     }
 
 
     /* =========================================
-       4. DESKTOP PHONE PARALLAX
-    ========================================= */
-
-    const phoneWrappers =
-        document.querySelectorAll(".phone-wrapper");
-
-    let ticking = false;
-
-    window.addEventListener(
-        "mousemove",
-        event => {
-
-            /* Disable on tablet/mobile */
-
-            if (window.innerWidth <= 992) return;
-
-            if (ticking) return;
-
-            ticking = true;
-
-            window.requestAnimationFrame(() => {
-
-                const centerX =
-                    window.innerWidth / 2;
-
-                const centerY =
-                    window.innerHeight / 2;
-
-                const moveX =
-                    (event.clientX - centerX) / 100;
-
-                const moveY =
-                    (event.clientY - centerY) / 120;
-
-
-                phoneWrappers.forEach(wrapper => {
-
-                    wrapper.style.setProperty(
-                        "--parallax-x",
-                        `${moveX}px`
-                    );
-
-                    wrapper.style.setProperty(
-                        "--parallax-y",
-                        `${moveY}px`
-                    );
-
-                });
-
-                ticking = false;
-
-            });
-
-        },
-        { passive: true }
-    );
-
-
-    /* =========================================
-       5. RESET PARALLAX
-    ========================================= */
-
-    document.addEventListener("mouseleave", () => {
-
-        if (window.innerWidth <= 992) return;
-
-        phoneWrappers.forEach(wrapper => {
-
-            wrapper.style.setProperty(
-                "--parallax-x",
-                "0px"
-            );
-
-            wrapper.style.setProperty(
-                "--parallax-y",
-                "0px"
-            );
-
-        });
-
-    });
-
-
-    /* =========================================
-       6. REDUCE MOTION
+       4. REDUCE MOTION
        Accessibility
-    ========================================= */
+       ========================================= */
 
     const prefersReducedMotion =
         window.matchMedia(
@@ -236,4 +203,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (prefersReducedMotion) {
 
-       
+        document.documentElement.classList.add(
+            "reduce-motion"
+        );
+
+    }
+
+});
