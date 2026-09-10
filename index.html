@@ -3,250 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kilix - منصة التجارة بالجملة في الجزائر</title>
-    <!-- Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- خط Tajawal من Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- ملف الاستايل الخارجي -->
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- Arabic Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- الخلفية المتحركة -->
-    <div class="animated-bg" aria-hidden="true">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
+    <!-- =========================
+         BACKGROUND DECORATION
+    ========================== -->
+    <div class="page-decoration" aria-hidden="true">
+        <div class="orange-shape orange-shape-top"></div>
+        <div class="orange-line orange-line-1"></div>
+        <div class="orange-line orange-line-2"></div>
+        <div class="orange-shape orange-shape-side"></div>
     </div>
 
-    <!-- 1. الهيدر والشريط العلوي -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            
-            <div class="logo">
-                <span class="logo-orange">Ki</span><span class="logo-blue">lix</span>
-            </div>
 
-            <a href="#download" class="btn-download-nav">
-                <i class="fa-solid fa-download"></i>
-                <span>حمّل التطبيق</span>
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <!-- Menu -->
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="فتح القائمة"
+                type="button"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- Logo -->
+            <a href="#" class="logo" aria-label="Kilix">
+                <span class="logo-orange">Ki</span><span class="logo-blue">lix</span>
             </a>
+
+
+            <!-- Download -->
+            <a href="#download" class="btn-download-nav">
+
+                <span>حمّل التطبيق</span>
+
+                <i class="fa-solid fa-download"></i>
+
+            </a>
+
         </div>
+
     </header>
 
-    <!-- 2. القسم الرئيسي (Hero Section) -->
-    <section class="hero">
-        <div class="container hero-container">
-            
-            <!-- النصوص والأزرار (تظهر في اليمين) -->
-            <div class="hero-content">
-                <div class="badge">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>منصة التجارة بالجملة في الجزائر</span>
-                </div>
 
-                <h1 class="hero-title">
-                    كل ما تحتاجه<br>
-                    للجملة،<br>
-                    <span class="highlight">في مكان واحد.</span>
-                </h1>
 
-                <p class="hero-description">
-                    اكتشف المنتجات، قارن أسعار الجملة، تعرّف على الموردين واطلب مباشرة من هاتفك.
-                </p>
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main>
 
-                <div class="cta-buttons" id="download">
-                    <a href="#" class="btn btn-primary">
-                        <i class="fa-brands fa-android"></i>
-                        <span>حمّل Kilix الآن</span>
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                    
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fa-brands fa-apple"></i>
-                        <div class="btn-text">
-                            <span>App Store</span>
-                        </div>
-                    </a>
-                </div>
+        <section class="hero">
 
-                <div class="platform-availability">
-                    <span>متوفر على أندرويد</span>
-                    <span class="divider">|</span>
-                    <span class="muted">قريباً على iOS</span>
-                </div>
-            </div>
+            <div class="container hero-container">
 
-            <!-- صورة الهاتف (تظهر في اليسار) -->
-            <div class="hero-image">
-                <div class="phone-wrapper">
-                    <img src="Screenshot_2026-09-10-01-45-00-46_0ad4b9978e45354647ad0aaf72022460.jpg" alt="واجهة تطبيق Kilix على الهاتف" class="phone-img">
-                </div>
-            </div>
 
-        </div>
-    </section>
+                <!-- =====================
+                     HERO CONTENT
+                ====================== -->
+                <div class="hero-content">
 
-    <!-- 3. قسم الميزات السريعة السفلية (تم تعديل الترتيب ليطابق الصورة المرجعية) -->
-    <section class="features">
-        <div class="container features-grid">
-            
-            <div class="feature-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-truck-fast"></i>
-                </div>
-                <h3>اطلب مباشر من هاتفك</h3>
-            </div>
 
-            <div class="feature-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <h3>موردين موثوقين ومتنوعين</h3>
-            </div>
-
-            <div class="feature-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-tags"></i>
-                </div>
-                <h3>مقارنة الأسعار بين الموردين</h3>
-            </div>
-
-            <div class="feature-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <h3>ابحث ذكي بالاسم أو الصورة</h3>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 4. قسم لماذا يختار التجار Kilix -->
-    <section class="why-us">
-        <div class="container">
-            
-            <div class="why-us-hero">
-                <div class="why-us-text">
+                    <!-- Location Badge -->
                     <div class="badge">
+
                         <i class="fa-solid fa-location-dot"></i>
-                        <span>منصة التجارة بالجملة في الجزائر</span>
+
+                        <span>
+                            منصة التجارة بالجملة في الجزائر
+                        </span>
+
                     </div>
 
-                    <h2 class="section-title">
-                        لماذا يختار التجار<br>
-                        <span class="highlight">Kilix؟</span>
-                    </h2>
 
-                    <p class="section-desc">
-                        من البحث عن المنتج إلى إتمام الطلب، كل شيء أصبح أسهل وفي مكان واحد.
+
+                    <!-- Main Heading -->
+                    <h1 class="hero-title">
+
+                        كل ما تحتاجه
+                        <br>
+
+                        للجملة،
+                        <br>
+
+                        <span class="highlight">
+                            في مكان واحد.
+                        </span>
+
+                    </h1>
+
+
+
+                    <!-- Decorative underline -->
+                    <div class="title-underline" aria-hidden="true"></div>
+
+
+
+                    <!-- Description -->
+                    <p class="hero-description">
+
+                        اكتشف المنتجات، قارن أسعار الجملة،
+                        <br>
+                        تعرّف على الموردين واطلب مباشرة
+                        <br>
+                        من هاتفك.
+
                     </p>
+
+
+
+                    <!-- =====================
+                         DOWNLOAD BUTTONS
+                    ====================== -->
+                    <div class="cta-buttons" id="download">
+
+
+                        <!-- Android -->
+                        <a href="#" class="btn btn-primary">
+
+                            <i class="fa-brands fa-android"></i>
+
+                            <span>
+                                حمّل Kilix الآن
+                            </span>
+
+                            <i class="fa-solid fa-arrow-left btn-arrow"></i>
+
+                        </a>
+
+
+
+                        <!-- App Store -->
+                        <a href="#" class="btn btn-secondary">
+
+                            <i class="fa-brands fa-apple"></i>
+
+                            <span>
+                                App Store
+                            </span>
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- Availability -->
+                    <div class="platform-availability">
+
+                        <span>
+                            متوفر على أندرويد
+                        </span>
+
+                        <span class="divider">
+                            |
+                        </span>
+
+                        <span class="muted">
+                            قريباً على iOS
+                        </span>
+
+                    </div>
+
                 </div>
 
-                <div class="why-us-visual">
+
+
+                <!-- =====================
+                     PHONE
+                ====================== -->
+                <div class="hero-image">
+
                     <div class="phone-wrapper">
-                        <img src="Screenshot_2026-09-10-01-45-00-46_0ad4b9978e45354647ad0aaf72022460.jpg" alt="عرض تطبيق Kilix" class="phone-img">
-                        <div class="floating-search-card">
-                            <i class="fa-solid fa-camera"></i>
-                        </div>
+
+                        <img
+                            src="Screenshot_2026-09-10-01-45-00-46_0ad4b9978e45354647ad0aaf72022460.jpg"
+                            alt="واجهة تطبيق Kilix للتجارة بالجملة"
+                            class="phone-img"
+                        >
+
                     </div>
+
                 </div>
-            </div>
-
-            <!-- شبكة المميزات التفصيلية -->
-            <div class="features-cards-grid">
-                
-                <div class="card-item">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <h3>ابحث بالاسم أو الصورة</h3>
-                    <p>لق المنتوج الذي تحتاجه بسهولة، حتى من خلال صورة المنتج.</p>
-                    <a href="#" class="card-link"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-
-                <div class="card-item">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-coins"></i>
-                    </div>
-                    <h3>قارن أسعار الموردين</h3>
-                    <p>شوف عروض وأسعار مختلفة لنفس المنتج قبل ما تختار.</p>
-                    <a href="#" class="card-link"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-
-                <div class="card-item">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <h3>اكتشف موردين جدد</h3>
-                    <p>وسع خياراتك وتعرّف على موردين ومنتجات جديدة في مكان واحد.</p>
-                    <a href="#" class="card-link"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-
-                <div class="card-item">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-box-archive"></i>
-                    </div>
-                    <h3>اطلب مباشرة من هاتفك</h3>
-                    <p>اختر المنتج، حدّد الكمية، وأرسل طلبك بسهولة.</p>
-                    <a href="#" class="card-link"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-
-            </div>
-
-            <!-- شريط الضمانات والخدمات -->
-            <div class="trust-banner">
-                <div class="trust-item">
-                    <i class="fa-solid fa-shield-halved trust-icon"></i>
-                    <div class="trust-text">
-                        <strong>توصيل سريع</strong>
-                        <span>إلى جميع الولايات</span>
-                    </div>
-                </div>
-
-                <div class="trust-divider"></div>
-
-                <div class="trust-item">
-                    <i class="fa-solid fa-hand-holding-dollar trust-icon"></i>
-                    <div class="trust-text">
-                        <strong>الدفع عند الاستلام</strong>
-                        <span>لراحة أكبر</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 5. قسم الدعوة للتحميل السفلي (Bottom CTA) -->
-    <section class="bottom-cta">
-        <div class="container cta-content">
-            <h2>جاهز لتطوير تجارتك مع <span class="highlight">Kilix؟</span></h2>
-            <p>حمّل التطبيق الآن وابدأ التصفح والطلب بكل بساطة.</p>
-
-            <div class="cta-buttons-row">
-                <a href="#" class="btn btn-primary">
-                    <i class="fa-brands fa-android"></i>
-                    <span>حمّل Kilix الآن</span>
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-
-                <a href="#" class="btn btn-appstore">
-                    <i class="fa-brands fa-apple"></i>
-                    <div class="btn-text">
-                        <span>App Store</span>
-                        <small>قريباً</small>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ملف السكريبت الخارجي -->
-    <script src="script.js"></script>
-</body>
-                   </html>
-                                                     
