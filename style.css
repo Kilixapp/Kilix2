@@ -1,8 +1,7 @@
 /* =========================================================
    KILIX — LANDING PAGE
-   Visual direction:
    Navy + Orange + Off White
-   Arabic RTL / Mobile First
+   Arabic RTL / Responsive
    ========================================================= */
 
 
@@ -11,7 +10,6 @@
    ========================================================= */
 
 :root {
-
     --orange: #ff6500;
     --orange-dark: #e95400;
     --orange-soft: #fff0e6;
@@ -61,13 +59,12 @@ html {
 }
 
 body {
-
     font-family: "Tajawal", sans-serif;
 
     background:
         radial-gradient(
-            circle at 90% 10%,
-            rgba(255, 101, 0, 0.035),
+            circle at 90% 12%,
+            rgba(255, 101, 0, 0.045),
             transparent 28%
         ),
         var(--background);
@@ -107,7 +104,6 @@ img {
 }
 
 .container {
-
     width: min(
         calc(100% - 40px),
         1180px
@@ -122,73 +118,52 @@ img {
    ========================================================= */
 
 .page-decoration {
-
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
-
     overflow: hidden;
 
     z-index: -1;
 }
 
-
-/* Orange abstract shape */
-
 .orange-shape {
-
     position: absolute;
 
     background: var(--orange);
 
-    opacity: 0.10;
+    opacity: 0.09;
 
     pointer-events: none;
 }
 
-
-/* Top right */
-
 .orange-shape-top {
+    width: 390px;
+    height: 260px;
 
-    width: 300px;
-    height: 300px;
-
-    top: -210px;
-    right: -130px;
+    top: -205px;
+    right: -120px;
 
     border-radius: 50%;
 }
 
-
-/* Side decoration */
-
 .orange-shape-side {
+    width: 180px;
+    height: 520px;
 
-    width: 150px;
-    height: 420px;
-
-    right: -115px;
+    right: -130px;
     top: 38%;
 
-    border-radius:
-        100px 0 0 100px;
+    border-radius: 100px 0 0 100px;
 
-    transform:
-        rotate(-18deg);
+    transform: rotate(-18deg);
 }
 
-
-/* Decorative lines */
-
 .orange-line {
-
     position: absolute;
 
-    width: 45px;
-    height: 7px;
+    width: 55px;
+    height: 8px;
 
     background: var(--orange);
 
@@ -200,17 +175,15 @@ img {
 }
 
 .orange-line-1 {
-
-    top: 115px;
-    right: 8%;
+    top: 145px;
+    right: 7%;
 }
 
 .orange-line-2 {
+    top: 168px;
+    right: 4.5%;
 
-    top: 135px;
-    right: 5%;
-
-    width: 25px;
+    width: 30px;
 }
 
 
@@ -219,9 +192,7 @@ img {
    ========================================================= */
 
 .navbar {
-
     position: sticky;
-
     top: 0;
 
     width: 100%;
@@ -229,7 +200,7 @@ img {
     z-index: 1000;
 
     background:
-        rgba(255, 250, 247, 0.90);
+        rgba(255, 250, 247, 0.94);
 
     border-bottom:
         1px solid rgba(24, 55, 92, 0.06);
@@ -241,10 +212,8 @@ img {
         blur(16px);
 }
 
-
 .nav-container {
-
-    min-height: 78px;
+    min-height: 82px;
 
     display: grid;
 
@@ -258,16 +227,15 @@ img {
 /* Logo */
 
 .logo {
-
     grid-column: 2;
 
-    font-size: 2.35rem;
+    font-size: 2.55rem;
 
     line-height: 1;
 
     font-weight: 900;
 
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 
     transition:
         transform var(--transition);
@@ -289,13 +257,12 @@ img {
 /* Menu */
 
 .menu-toggle {
-
     grid-column: 1;
 
     justify-self: start;
 
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
 
     border: 0;
 
@@ -307,7 +274,9 @@ img {
 
     justify-content: center;
 
-    gap: 5px;
+    align-items: center;
+
+    gap: 6px;
 
     padding: 10px;
 
@@ -317,11 +286,10 @@ img {
 }
 
 .menu-toggle span {
-
     display: block;
 
-    width: 24px;
-    height: 2.5px;
+    width: 28px;
+    height: 3px;
 
     background: var(--navy);
 
@@ -334,7 +302,7 @@ img {
 
 .menu-toggle.active span:nth-child(1) {
     transform:
-        translateY(7.5px)
+        translateY(9px)
         rotate(45deg);
 }
 
@@ -344,7 +312,7 @@ img {
 
 .menu-toggle.active span:nth-child(3) {
     transform:
-        translateY(-7.5px)
+        translateY(-9px)
         rotate(-45deg);
 }
 
@@ -352,7 +320,6 @@ img {
 /* Download button */
 
 .btn-download-nav {
-
     grid-column: 3;
 
     justify-self: end;
@@ -360,11 +327,14 @@ img {
     display: inline-flex;
 
     align-items: center;
+    justify-content: center;
 
     gap: 9px;
 
     padding:
-        11px 21px;
+        12px 22px;
+
+    min-width: 150px;
 
     border-radius:
         var(--radius-pill);
@@ -375,9 +345,11 @@ img {
     color:
         var(--white);
 
-    font-size: 0.92rem;
+    font-size:
+        0.95rem;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
     box-shadow:
         0 8px 20px rgba(255, 101, 0, 0.18);
@@ -389,7 +361,6 @@ img {
 }
 
 .btn-download-nav:hover {
-
     transform:
         translateY(-2px);
 
@@ -406,29 +377,27 @@ img {
    ========================================================= */
 
 .hero {
-
     position: relative;
 
     padding:
-        65px 0 35px;
+        55px 0 35px;
 
     min-height:
-        calc(100vh - 78px);
+        calc(100vh - 82px);
 
     display: flex;
 
     align-items: center;
 }
 
-
 .hero-container {
-
     display: grid;
 
     grid-template-columns:
-        1fr 0.92fr;
+        minmax(0, 1fr)
+        minmax(360px, 0.92fr);
 
-    gap: 65px;
+    gap: 50px;
 
     align-items: center;
 
@@ -439,31 +408,32 @@ img {
 /* Text */
 
 .hero-content {
-
     direction: rtl;
 
     position: relative;
 
     z-index: 5;
+
+    max-width: 610px;
 }
 
 
 /* Badge */
 
 .badge {
-
     width: fit-content;
 
     display: inline-flex;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 9px;
 
     padding:
-        8px 15px;
+        9px 17px;
 
-    margin-bottom: 20px;
+    margin-bottom:
+        22px;
 
     border-radius:
         var(--radius-pill);
@@ -474,1101 +444,22 @@ img {
     color:
         var(--orange);
 
-    font-size: 0.86rem;
+    font-size:
+        0.9rem;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
 
 .badge i {
-    font-size: 0.85rem;
+    font-size:
+        0.95rem;
 }
 
 
 /* Heading */
 
 .hero-title {
+    display: flex;
 
-    color:
-        var(--navy);
-
-    font-size:
-        clamp(3rem, 5vw, 4.4rem);
-
-    font-weight:
-        900;
-
-    line-height:
-        1.10;
-
-    letter-spacing:
-        -1.5px;
-
-    margin-bottom:
-        10px;
-}
-
-.hero-title .highlight {
-    color:
-        var(--orange);
-}
-
-
-/* Decorative underline */
-
-.title-underline {
-
-    width: 145px;
-
-    height: 11px;
-
-    margin:
-        -1px 0 22px 4px;
-
-    border-bottom:
-        5px solid var(--orange);
-
-    border-radius:
-        50%;
-
-    transform:
-        rotate(-3deg);
-
-    opacity:
-        0.9;
-}
-
-
-/* Description */
-
-.hero-description {
-
-    max-width:
-        500px;
-
-    margin-bottom:
-        30px;
-
-    color:
-        var(--muted);
-
-    font-size:
-        1.08rem;
-
-    font-weight:
-        500;
-
-    line-height:
-        1.85;
-}
-
-
-/* =========================================================
-   06. CTA BUTTONS
-   ========================================================= */
-
-.cta-buttons {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        11px;
-
-    width:
-        min(100%, 350px);
-
-    margin-bottom:
-        14px;
-}
-
-
-.btn {
-
-    min-height:
-        55px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        11px;
-
-    padding:
-        13px 22px;
-
-    border-radius:
-        var(--radius-pill);
-
-    font-size:
-        0.98rem;
-
-    font-weight:
-        800;
-
-    border:
-        1px solid transparent;
-
-    transition:
-        transform var(--transition),
-        box-shadow var(--transition),
-        background var(--transition);
-}
-
-
-/* Android */
-
-.btn-primary {
-
-    color:
-        var(--white);
-
-    background:
-        var(--orange);
-
-    box-shadow:
-        var(--shadow-button);
-}
-
-.btn-primary:hover {
-
-    background:
-        var(--orange-dark);
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 16px 32px rgba(255, 101, 0, 0.28);
-}
-
-.btn-primary .fa-android {
-
-    font-size:
-        1.25rem;
-}
-
-.btn-arrow {
-
-    margin-right:
-        auto;
-
-    font-size:
-        0.8rem;
-}
-
-
-/* App Store */
-
-.btn-secondary {
-
-    color:
-        var(--navy);
-
-    background:
-        var(--white);
-
-    border-color:
-        rgba(24, 55, 92, 0.12);
-
-    box-shadow:
-        var(--shadow-soft);
-}
-
-.btn-secondary:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(24, 55, 92, 0.20);
-
-    box-shadow:
-        0 15px 30px rgba(24, 55, 92, 0.10);
-}
-
-.btn-secondary .fa-apple {
-
-    font-size:
-        1.25rem;
-}
-
-
-/* Platform */
-
-.platform-availability {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        9px;
-
-    padding-right:
-        4px;
-
-    font-size:
-        0.82rem;
-
-    font-weight:
-        700;
-
-    color:
-        var(--navy);
-}
-
-.platform-availability .divider {
-    color:
-        #ccd4dd;
-}
-
-.platform-availability .muted {
-    color:
-        #8995a3;
-
-    font-weight:
-        500;
-}
-
-
-/* =========================================================
-   07. PHONE
-   ========================================================= */
-
-.hero-image {
-
-    direction:
-        ltr;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    position:
-        relative;
-
-    min-height:
-        590px;
-}
-
-
-/* Large orange glow behind phone */
-
-.hero-image::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        430px;
-
-    height:
-        430px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255, 101, 0, 0.075);
-
-    filter:
-        blur(3px);
-
-    z-index:
-        -1;
-}
-
-
-/* Phone */
-
-.phone-wrapper {
-
-    position:
-        relative;
-
-    width:
-        min(100%, 355px);
-
-    transform:
-        translate3d(
-            var(--parallax-x, 0px),
-            var(--parallax-y, 0px),
-            0
-        )
-        rotate(1.5deg);
-
-    transition:
-        transform 0.18s ease-out;
-}
-
-
-/* Shadow under phone */
-
-.phone-wrapper::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    left:
-        12%;
-
-    right:
-        12%;
-
-    bottom:
-        -25px;
-
-    height:
-        35px;
-
-    background:
-        rgba(24, 55, 92, 0.18);
-
-    filter:
-        blur(25px);
-
-    border-radius:
-        50%;
-
-    z-index:
-        -1;
-}
-
-
-/* Screenshot */
-
-.phone-img {
-
-    width:
-        100%;
-
-    border-radius:
-        38px;
-
-    border:
-        7px solid #151a22;
-
-    box-shadow:
-        var(--shadow-phone);
-
-    background:
-        #151a22;
-
-    transition:
-        transform 0.35s ease;
-}
-
-
-/* =========================================================
-   08. FEATURES
-   ========================================================= */
-
-.features {
-
-    position:
-        relative;
-
-    padding:
-        25px 0 75px;
-}
-
-
-.features-grid {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    border-top:
-        1px solid var(--border);
-
-    border-bottom:
-        1px solid var(--border);
-}
-
-
-/* Feature */
-
-.feature-card {
-
-    position:
-        relative;
-
-    padding:
-        25px 16px;
-
-    text-align:
-        center;
-
-    transition:
-        transform var(--transition);
-}
-
-.feature-card:not(:last-child)::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    left:
-        0;
-
-    top:
-        25%;
-
-    width:
-        1px;
-
-    height:
-        50%;
-
-    background:
-        var(--border);
-}
-
-.feature-card:hover {
-
-    transform:
-        translateY(-4px);
-}
-
-
-/* Icon */
-
-.icon-wrapper {
-
-    width:
-        58px;
-
-    height:
-        58px;
-
-    margin:
-        0 auto 12px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--orange-soft);
-
-    color:
-        var(--orange);
-
-    font-size:
-        1.35rem;
-
-    transition:
-        transform var(--transition),
-        background var(--transition);
-}
-
-.feature-card:hover .icon-wrapper {
-
-    transform:
-        scale(1.08);
-
-    background:
-        #ffe6d6;
-}
-
-
-/* Feature title */
-
-.feature-card h3 {
-
-    color:
-        var(--navy);
-
-    font-size:
-        0.94rem;
-
-    font-weight:
-        800;
-
-    line-height:
-        1.55;
-}
-
-
-/* =========================================================
-   09. BOTTOM DECORATION
-   ========================================================= */
-
-.bottom-decoration {
-
-    position:
-        relative;
-
-    height:
-        100px;
-
-    overflow:
-        hidden;
-
-    margin-top:
-        10px;
-}
-
-
-.bottom-orange {
-
-    position:
-        absolute;
-
-    width:
-        70%;
-
-    height:
-        150px;
-
-    right:
-        -10%;
-
-    bottom:
-        -105px;
-
-    background:
-        var(--orange);
-
-    border-radius:
-        50% 50% 0 0;
-
-    transform:
-        rotate(-4deg);
-
-    opacity:
-        0.95;
-}
-
-
-.bottom-blue {
-
-    position:
-        absolute;
-
-    width:
-        65%;
-
-    height:
-        145px;
-
-    left:
-        -10%;
-
-    bottom:
-        -110px;
-
-    background:
-        var(--navy);
-
-    border-radius:
-        50% 50% 0 0;
-
-    transform:
-        rotate(5deg);
-
-    opacity:
-        0.98;
-}
-
-
-/* =========================================================
-   10. SCROLL REVEAL
-   ========================================================= */
-
-.reveal-element {
-
-    opacity:
-        0;
-
-    transform:
-        translateY(22px);
-
-    transition:
-        opacity 0.65s cubic-bezier(.16,1,.3,1),
-        transform 0.65s cubic-bezier(.16,1,.3,1);
-}
-
-.reveal-element.is-visible {
-
-    opacity:
-        1;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================================
-   11. RESPONSIVE — TABLET
-   ========================================================= */
-
-@media (max-width: 992px) {
-
-    .hero {
-
-        padding-top:
-            45px;
-
-        min-height:
-            auto;
-    }
-
-
-    .hero-container {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            30px;
-
-        text-align:
-            center;
-    }
-
-
-    .hero-content {
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            center;
-    }
-
-
-    .badge {
-
-        margin-bottom:
-            18px;
-    }
-
-
-    .hero-description {
-
-        margin-inline:
-            auto;
-    }
-
-
-    .title-underline {
-
-        margin-inline:
-            auto;
-
-        margin-bottom:
-            20px;
-    }
-
-
-    .cta-buttons {
-
-        margin-inline:
-            auto;
-    }
-
-
-    .platform-availability {
-
-        justify-content:
-            center;
-    }
-
-
-    .hero-image {
-
-        min-height:
-            520px;
-    }
-
-
-    .phone-wrapper {
-
-        width:
-            min(68vw, 350px);
-    }
-
-
-    .features-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-
-    .feature-card:nth-child(2)::after {
-
-        display:
-            none;
-    }
-
-}
-
-
-/* =========================================================
-   12. RESPONSIVE — MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .container {
-
-        width:
-            min(
-                calc(100% - 28px),
-                600px
-            );
-    }
-
-
-    .nav-container {
-
-        min-height:
-            68px;
-    }
-
-
-    .logo {
-
-        font-size:
-            2rem;
-    }
-
-
-    .btn-download-nav {
-
-        display:
-            none;
-    }
-
-
-    .hero {
-
-        padding:
-            35px 0 20px;
-    }
-
-
-    .hero-title {
-
-        font-size:
-            clamp(2.55rem, 12vw, 3.5rem);
-
-        line-height:
-            1.08;
-
-        letter-spacing:
-            -1px;
-    }
-
-
-    .hero-description {
-
-        font-size:
-            0.98rem;
-
-        line-height:
-            1.8;
-    }
-
-
-    .hero-image {
-
-        min-height:
-            auto;
-
-        padding:
-            15px 0 20px;
-    }
-
-
-    .hero-image::before {
-
-        width:
-            280px;
-
-        height:
-            280px;
-    }
-
-
-    .phone-wrapper {
-
-        width:
-            min(78vw, 330px);
-
-        transform:
-            rotate(1deg);
-    }
-
-
-    .phone-img {
-
-        border-radius:
-            32px;
-
-        border-width:
-            6px;
-    }
-
-
-    .features {
-
-        padding:
-            20px 0 50px;
-    }
-
-
-    .features-grid {
-
-        gap:
-            0;
-
-        border-top:
-            1px solid var(--border);
-
-        border-bottom:
-            0;
-    }
-
-
-    .feature-card {
-
-        padding:
-            20px 8px;
-
-        border-bottom:
-            1px solid var(--border);
-    }
-
-
-    .feature-card:nth-child(odd)::after {
-
-        display:
-            block;
-    }
-
-
-    .feature-card:nth-child(even)::after {
-
-        display:
-            none;
-    }
-
-
-    .icon-wrapper {
-
-        width:
-            52px;
-
-        height:
-            52px;
-
-        font-size:
-            1.2rem;
-    }
-
-
-    .feature-card h3 {
-
-        font-size:
-            0.82rem;
-    }
-
-
-    .bottom-decoration {
-
-        height:
-            65px;
-    }
-
-}
-
-
-/* =========================================================
-   13. SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .hero-title {
-
-        font-size:
-            2.5rem;
-    }
-
-
-    .badge {
-
-        font-size:
-            0.76rem;
-
-        padding:
-            7px 12px;
-    }
-
-
-    .hero-description {
-
-        font-size:
-            0.91rem;
-    }
-
-
-    .cta-buttons {
-
-        width:
-            100%;
-    }
-
-
-    .btn {
-
-        min-height:
-            52px;
-
-        font-size:
-            0.93rem;
-    }
-
-
-    .phone-wrapper {
-
-        width:
-            min(82vw, 315px);
-    }
-
-
-    .features-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-
-    .feature-card {
-
-        min-height:
-            145px;
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-    }
-
-
-    .feature-card h3 {
-
-        font-size:
-            0.78rem;
-
-        line-height:
-            1.5;
-    }
-
-
-    .orange-line-1 {
-
-        right:
-            3%;
-
-        top:
-            95px;
-    }
-
-
-    .orange-line-2 {
-
-        right:
-            1%;
-
-        top:
-            112px;
-    }
-
-}
-
-
-/* =========================================================
-   14. ACCESSIBILITY
-   ========================================================= */
-
-.reduce-motion *,
-.reduce-motion *::before,
-.reduce-motion *::after {
-
-    animation:
-        none !important;
-
-    transition:
-        none !important;
-
-    scroll-behavior:
-        auto !important;
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation:
-            none !important;
-
-        transition:
-            none !important;
-
-        scroll-behavior:
-            auto !important;
-    }
-}
+   
