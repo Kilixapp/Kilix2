@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* =========================================
        2. SMOOTH SCROLL
     ========================================= */
@@ -65,12 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 behavior: "smooth"
             });
 
+
             /* Close mobile menu */
 
             if (
                 navContainer &&
                 navContainer.classList.contains("menu-open")
             ) {
+
                 navContainer.classList.remove("menu-open");
 
                 menuToggle?.classList.remove("active");
@@ -86,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
-
 
 
     /* =========================================
@@ -114,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             },
             {
-                threshold: 0.12,
-                rootMargin: "0px 0px -40px 0px"
+                threshold: 0.1,
+                rootMargin: "0px 0px -30px 0px"
             }
         );
 
@@ -133,14 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-        /* Fallback for older browsers */
-
         revealElements.forEach(element => {
             element.classList.add("is-visible");
         });
 
     }
-
 
 
     /* =========================================
@@ -155,6 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(
         "mousemove",
         event => {
+
+            /* Disable on tablet/mobile */
 
             if (window.innerWidth <= 992) return;
 
@@ -171,10 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.innerHeight / 2;
 
                 const moveX =
-                    (event.clientX - centerX) / 80;
+                    (event.clientX - centerX) / 100;
 
                 const moveY =
-                    (event.clientY - centerY) / 100;
+                    (event.clientY - centerY) / 120;
 
 
                 phoneWrappers.forEach(wrapper => {
@@ -198,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         { passive: true }
     );
-
 
 
     /* =========================================
@@ -226,7 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
     /* =========================================
        6. REDUCE MOTION
        Accessibility
@@ -239,10 +236,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (prefersReducedMotion) {
 
-        document.documentElement.classList.add(
-            "reduce-motion"
-        );
-
-    }
-
-});
+       
