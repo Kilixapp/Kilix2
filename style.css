@@ -1,547 +1,238 @@
-/* ==========================================================================
-   1. VARIABLES & RESET (المتغيرات وإعادة الضبط)
-   ========================================================================== */
-:root {
-    --primary-orange: #FF6600;
-    --primary-orange-hover: #E55B00;
-    --primary-orange-light: #ffe6d5;
-    --dark-blue: #0b1a30;
-    --text-dark: #1e293b;
-    --text-muted: #64748b;
-    --bg-light: #fffaf5;
-    --card-bg: #ffffff;
-    --font-main: 'Tajawal', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: var(--font-main);
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    direction: rtl;
-    overflow-x: hidden;
-    position: relative;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ==========================================================================
-   2. NAVBAR (الهيدر والشريط العلوي)
-   ========================================================================== */
-.navbar {
-    padding: 20px 0;
-    background: transparent;
-    position: relative;
-    z-index: 10;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: var(--dark-blue);
-    cursor: pointer;
-}
-
-.logo {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.logo-orange { color: var(--primary-orange); }
-.logo-blue { color: var(--dark-blue); }
-
-.btn-download-nav {
-    background-color: var(--primary-orange);
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.3s ease;
-}
-
-.btn-download-nav:hover {
-    background-color: var(--primary-orange-hover);
-}
-
-/* ==========================================================================
-   3. HERO SECTION - SECTION 1 (القسم الرئيسي الأول)
-   ========================================================================== */
-.hero {
-    padding: 40px 0 60px;
-    position: relative;
-    z-index: 5;
-}
-
-.hero-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--primary-orange-light);
-    color: var(--primary-orange);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 24px;
-}
-
-.hero-title {
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 1.2;
-    color: var(--dark-blue);
-    margin-bottom: 20px;
-}
-
-.highlight {
-    color: var(--primary-orange);
-    position: relative;
-}
-
-.hero-description {
-    font-size: 18px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 32px;
-    max-width: 480px;
-}
-
-/* أزرار الدعوة للعمل (CTA Buttons) */
-.cta-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 320px;
-    margin-bottom: 16px;
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--primary-orange);
-    color: #ffffff;
-    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-orange-hover);
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--dark-blue);
-    border: 2px solid var(--dark-blue);
-}
-
-.btn-secondary:hover {
-    background-color: var(--dark-blue);
-    color: #ffffff;
-}
-
-.platform-availability {
-    font-size: 14px;
-    color: var(--text-dark);
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.platform-availability .muted {
-    color: var(--text-muted);
-}
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-}
-
-.phone-mockup img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* ==========================================================================
-   4. QUICK FEATURES - SECTION 1 (الميزات الأفقية السريعة)
-   ========================================================================== */
-.features {
-    padding: 40px 0 60px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.feature-card {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-.icon-wrapper {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: var(--primary-orange-light);
-    color: var(--primary-orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-}
-
-.feature-card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--dark-blue);
-}
-
-/* ==========================================================================
-   5. WHY CHOOSE KILIX - SECTION 2 (قسم لماذا يختار التجار Kilix)
-   ========================================================================== */
-.why-us {
-    padding: 60px 0;
-    position: relative;
-    z-index: 5;
-}
-
-.why-us-hero {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
-.section-title {
-    font-size: 42px;
-    font-weight: 900;
-    color: var(--dark-blue);
-    margin-bottom: 16px;
-}
-
-.section-desc {
-    font-size: 18px;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-/* الهاتف والعنصر العائم للبحث بالصورة */
-.phone-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.phone-img {
-    max-width: 280px;
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.floating-search-card {
-    position: absolute;
-    top: 30%;
-    right: 10%;
-    background: #ffffff;
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    color: var(--primary-orange);
-    font-size: 24px;
-    border: 2px solid var(--primary-orange-light);
-}
-
-/* شبكة البطاقات التفصيلية (2×2) */
-.features-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
-}
-
-.card-item {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.card-icon {
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-orange-light);
-    color: var(--primary-orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.card-item h3 {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--dark-blue);
-    margin-bottom: 10px;
-}
-
-.card-item p {
-    font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.card-link {
-    color: var(--primary-orange);
-    font-size: 18px;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.card-item:hover .card-link {
-    transform: translateX(-5px);
-}
-
-/* ==========================================================================
-   6. TRUST BANNER (شريط الضمانات والتوصيل)
-   ========================================================================== */
-.trust-banner {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.trust-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.trust-icon {
-    width: 45px;
-    height: 45px;
-    background-color: var(--primary-orange-light);
-    color: var(--primary-orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-}
-
-.trust-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.trust-text strong {
-    font-size: 15px;
-    color: var(--dark-blue);
-}
-
-.trust-text span {
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-.trust-divider {
-    width: 1px;
-    height: 40px;
-    background-color: #e2e8f0;
-}
-
-/* ==========================================================================
-   7. BOTTOM CTA SECTION (قسم الدعوة للتحميل السفلي)
-   ========================================================================== */
-.bottom-cta {
-    background-color: var(--dark-blue);
-    color: #ffffff;
-    padding: 60px 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.bottom-cta::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: var(--bg-light);
-    border-bottom-left-radius: 50% 100%;
-    border-bottom-right-radius: 50% 100%;
-}
-
-.bottom-cta h2 {
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-.bottom-cta p {
-    color: #94a3b8;
-    font-size: 16px;
-    margin-bottom: 30px;
-}
-
-.cta-buttons-row {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.btn-outline-dark {
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-outline-dark:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.btn-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1.1;
-}
-
-.btn-text small {
-    font-size: 10px;
-    color: #94a3b8;
-}
-
-/* ==========================================================================
-   8. RESPONSIVE DESIGN (التجاوب مع الهاتف والشاشات الصغيرة)
-   ========================================================================== */
-@media (max-width: 768px) {
-    /* Section 1 Responsive */
-    .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-description {
-        margin: 0 auto 32px;
-    }
-
-    .cta-buttons {
-        margin: 0 auto 16px;
-    }
-
-    .platform-availability {
-        justify-content: center;
-    }
-
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
-    /* Section 2 Responsive */
-    .why-us-hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .features-cards-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .trust-banner {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-
-    .trust-item {
-        flex-direction: column;
-    }
-
-    .trust-divider {
-        width: 80%;
-        height: 1px;
-    }
-
-    .cta-buttons-row {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        width: 100%;
-        max-width: 300px;
-    }
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilix - منصة التجارة بالجملة في الجزائر</title>
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- خط Tajawal من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- ملفات CSS -->
+    <link rel="stylesheet" href="animated-background.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الخلفية المتحركة -->
+    <div class="animated-bg" aria-hidden="true">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <!-- الهيدر / الشريط العلوي -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <button class="menu-toggle" aria-label="فتح القائمة">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <div class="logo">
+                <span class="logo-orange">Ki</span><span class="logo-blue">lix</span>
+            </div>
+
+            <a href="#download" class="btn-download-nav">
+                <i class="fa-solid fa-download"></i> حمّل التطبيق
+            </a>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي HERO -->
+    <section class="hero">
+        <div class="container hero-container">
+            
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>منصة التجارة بالجملة في الجزائر</span>
+                </div>
+
+                <h1 class="hero-title">
+                    كل ما تحتاجه بالجملة،<br>
+                    <span class="highlight">في مكان واحد.</span>
+                </h1>
+
+                <p class="hero-description">
+                    اكتشف المنتجات، قارن أسعار الجملة، تعرّف على الموردين واطلب مباشرة من هاتفك.
+                </p>
+
+                <div class="cta-buttons" id="download">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fa-brands fa-android"></i>
+                        <span>حمّل Kilix الآن</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fa-brands fa-apple"></i>
+                        <span>App Store</span>
+                    </a>
+                </div>
+
+                <div class="platform-availability">
+                    <span>متوفر على أندرويد</span>
+                    <span class="divider">|</span>
+                    <span class="muted">قريباً على iOS</span>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="phone-mockup">
+                    <img src="app-interface.png" alt="واجهة تطبيق Kilix" loading="eager" onerror="this.onerror=null; this.src='https://via.placeholder.com/350x700/0f172a/ffffff?text=Kilix+App+Interface';">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم الميزات الأفقية السريعة -->
+    <section class="features">
+        <div class="container features-grid">
+            
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3>اطلب مباشر من هاتفك</h3>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3>موردين موثوقين ومتنوعين</h3>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-tags"></i>
+                </div>
+                <h3>مقارنة الأسعار بين الموردين</h3>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3>بحث ذكي بالاسم أو الصورة</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم لماذا يختار التجار Kilix -->
+    <section class="why-us">
+        <div class="container">
+            
+            <div class="why-us-hero">
+                <div class="why-us-text">
+                    <div class="badge">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>منصة التجارة بالجملة في الجزائر</span>
+                    </div>
+                    <h2 class="section-title">
+                        لماذا يختار التجار <span class="highlight">Kilix</span>؟
+                    </h2>
+                    <p class="section-desc">
+                        من البحث عن المنتج إلى إتمام الطلب، كل شيء أصبح أسهل وفي مكان واحد.
+                    </p>
+                </div>
+
+                <div class="why-us-visual">
+                    <div class="phone-wrapper">
+                        <img src="app-screen.png" alt="تطبيق Kilix للبحث" class="phone-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/320x600/0f172a/ffffff?text=Kilix+App+Screen';">
+                        <div class="floating-search-card" aria-label="البحث بواسطة الكاميرا">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-cards-grid">
+                
+                <div class="card-item">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3>ابحث بالاسم أو الصورة</h3>
+                    <p>لقَ المنتج الذي تحتاجه بسهولة، حتى من خلال صورة المنتج.</p>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <div class="card-item">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <h3>قارن أسعار الموردين</h3>
+                    <p>شوف عروض وأسعار مختلفة لنفس المنتج قبل ما تختار.</p>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <div class="card-item">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3>اكتشف موردين جدد</h3>
+                    <p>وسّع خياراتك وتعرّف على موردين ومنتجات جديدة في مكان واحد.</p>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <div class="card-item">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3>اطلب مباشرة من هاتفك</h3>
+                    <p>اختر المنتج، حدّد الكمية، وأرسل طلبك بسهولة.</p>
+                    <a href="#" class="card-link" aria-label="التفاصيل"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+            </div>
+
+            <div class="trust-banner">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="trust-text">
+                        <strong>توصيل سريع</strong>
+                        <span>إلى جميع الولايات</span>
+                    </div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <div class="trust-text">
+                        <strong>الدفع عند الاستلام</strong>
+                        <span>لراحة أكبر</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم الدعوة للتحميل السفلي CTA -->
+    <section class="bottom-cta">
+        <div class="container cta-content">
+            <h2>جاهز لتطوير تجارتك مع <span class="highlight">Kilix</span>؟</h2>
+            <p>حمّل التطبيق الآن وابدأ التصفح والطلب بكل بساطة.</p>
+            
+            <div class="cta-buttons-row">
+                <a href="#" class="btn btn-primary">
+                    <i class="fa-brands fa-android"></i>
+                    <span>حمّل Kilix الآن</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                
+                <a href="#" class="btn btn-outline-dark">
+                    <i class="fa-brands fa-apple"></i>
+                    <div class="btn-text">
+                        <span>App Store</span>
+                        <small>قريباً</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
