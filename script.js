@@ -80,8 +80,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       2. IOS APP STORE - COMING SOON
+       2. SUPABASE + IOS APP STORE - COMING SOON
     ========================================== */
+
+    const SUPABASE_URL = "https://xsswxjaaqhkbsheeclge.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4Zq8XdOzwyqElOEd-4tPvQ_70y1weCa";
+
+    let supabase = null;
+
+    if (window.supabase && window.supabase.createClient) {
+        supabase = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+    }
+
+    const iosDownloadButton = document.getElementById("iosDownloadButton");
+
+    if (iosDownloadButton) {
+        iosDownloadButton.addEventListener("click", async function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (!supabase) {
+                alert("يتوفر قريبًا على App Store");
+                return;
+            }
+
+            const name = prompt("أدخل اسمك للتسجيل في قائمة الانتظار:");
+            if (!name || name.trim().length < 2) {
+                alert("يرجى إدخال اسم صحيح.");
+                return;
+            }
+
+            const email = prompt("أدخل بريدك الإلكتروني:");
+            if (!email || !email.includes("@")) {
+                alert("يرجى إدخال بريد إلكتروني صحيح.");
+                return;
+            }
+
+            const { error } = await supabase
+                .from("ios_waitlist_registrations")
+                .insert({
+                    full_name: name.trim(),
+                    email: email.trim(),
+                    role: "أفضل عدم الإجابة"
+                });
+
+            if (error) {
+                console.error("iOS waitlist registration failed:", error);
+                alert("يتوفر قريبًا على App Store");
+                return;
+            }
+
+            alert("تم تسجيلك بنجاح! سنخبرك عند توفر Kilix على App Store.");
+        });
+    }
+
+
+
 
     const iosDownloadButton = document.getElementById("iosDownloadButton");
 
