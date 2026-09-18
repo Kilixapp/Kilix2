@@ -418,6 +418,105 @@
 
     </footer>
 
+    
+    <!-- =========================================
+         iOS WAITLIST MODAL
+    ========================================== -->
+    <div
+        class="waitlist-modal"
+        id="waitlistModal"
+        aria-hidden="true"
+    >
+        <div class="waitlist-backdrop" data-waitlist-close></div>
+
+        <div
+            class="waitlist-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="waitlistTitle"
+        >
+            <button
+                type="button"
+                class="waitlist-close"
+                id="waitlistClose"
+                aria-label="إغلاق"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="waitlist-icon">
+                <i class="fa-brands fa-apple"></i>
+            </div>
+
+            <h2 id="waitlistTitle">كن أول من يعرف</h2>
+
+            <p class="waitlist-description">
+                سجّل بياناتك وسنخبرك عند توفر Kilix على App Store.
+            </p>
+
+            <form id="waitlistForm" class="waitlist-form">
+                <label for="waitlistName">الاسم الكامل</label>
+                <input
+                    id="waitlistName"
+                    name="full_name"
+                    type="text"
+                    placeholder="أدخل اسمك"
+                    autocomplete="name"
+                    required
+                >
+
+                <label for="waitlistEmail">البريد الإلكتروني</label>
+                <input
+                    id="waitlistEmail"
+                    name="email"
+                    type="email"
+                    placeholder="example@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="waitlistPhone">رقم الهاتف</label>
+                <input
+                    id="waitlistPhone"
+                    name="phone"
+                    type="tel"
+                    placeholder="05 XX XX XX XX"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    required
+                >
+
+                <label for="waitlistRole">أنت</label>
+                <select
+                    id="waitlistRole"
+                    name="role"
+                    required
+                >
+                    <option value="" selected disabled>اختر نوع نشاطك</option>
+                    <option value="تاجر إلكتروني">تاجر إلكتروني</option>
+                    <option value="تاجر">تاجر</option>
+                    <option value="مورد">مورد</option>
+                </select>
+
+                <button
+                    type="submit"
+                    class="waitlist-submit"
+                    id="waitlistSubmit"
+                >
+                    <span>إرسال</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+                <p
+                    class="waitlist-status"
+                    id="waitlistStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+            </form>
+        </div>
+    </div>
+
 
     <!-- =========================================
          JAVASCRIPT
