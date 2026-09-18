@@ -80,7 +80,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       2. SMOOTH SCROLL
+       2. IOS APP STORE - COMING SOON
+    ========================================== */
+
+    const iosDownloadButton = document.getElementById("iosDownloadButton");
+
+    if (iosDownloadButton) {
+        iosDownloadButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            alert("يتوفر قريبًا على App Store");
+        });
+    }
+
+
+    /* =========================================
+       3. SMOOTH SCROLL
     ========================================== */
 
     const internalLinks = document.querySelectorAll(
@@ -121,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       3. SCROLL REVEAL
+       4. SCROLL REVEAL
     ========================================== */
 
     const revealElements = document.querySelectorAll(
@@ -176,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       4. REDUCE MOTION
+       5. REDUCE MOTION
     ========================================== */
 
     const prefersReducedMotion = window.matchMedia(
