@@ -124,46 +124,131 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* iOS: register interest for App Store availability */
+    /* iOS: open waitlist form and register interest */
     const iosDownloadButton = document.getElementById("iosDownloadButton");
+    const waitlistModal = document.getElementById("waitlistModal");
+    const waitlistClose = document.getElementById("waitlistClose");
+    const waitlistForm = document.getElementById("waitlistForm");
+    const waitlistSubmit = document.getElementById("waitlistSubmit");
+    const waitlistStatus = document.getElementById("waitlistStatus");
+
+    function openWaitlistModal() {
+        if (!waitlistModal) return;
+
+        waitlistModal.classList.add("open");
+        waitlistModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        const nameInput = document.getElementById("waitlistName");
+        if (nameInput) {
+            setTimeout(function () {
+                nameInput.focus();
+            }, 100);
+        }
+    }
+
+    function closeWaitlistModal() {
+        if (!waitlistModal) return;
+
+        waitlistModal.classList.remove("open");
+        waitlistModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+
+        if (waitlistStatus) {
+            waitlistStatus.textContent = "";
+        }
+    }
 
     if (iosDownloadButton) {
-        iosDownloadButton.addEventListener("click", async function (event) {
+        iosDownloadButton.addEventListener("click", function (event) {
             event.preventDefault();
             event.stopPropagation();
+            openWaitlistModal();
+        });
+    }
+
+    if (waitlistClose) {
+        waitlistClose.addEventListener("click", closeWaitlistModal);
+    }
+
+    if (waitlistModal) {
+        waitlistModal.querySelectorAll("[data-waitlist-close]").forEach(function (element) {
+            element.addEventListener("click", closeWaitlistModal);
+        });
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && waitlistModal && waitlistModal.classList.contains("open")) {
+            closeWaitlistModal();
+        }
+    });
+
+    if (waitlistForm) {
+        waitlistForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
 
             if (!supabase) {
-                alert("يتوفر قريبًا على App Store");
+                if (waitlistStatus) {
+                    waitlistStatus.textContent = "تعذر الاتصال بالخادم. حاول مرة أخرى.";
+                }
                 return;
             }
 
-            const name = prompt("أدخل اسمك للتسجيل في قائمة الانتظار:");
-            if (!name || name.trim().length < 2) {
-                alert("يرجى إدخال اسم صحيح.");
+            const formData = new FormData(waitlistForm);
+            const fullName = String(formData.get("full_name") || "").trim();
+            const email = String(formData.get("email") || "").trim();
+            const phone = String(formData.get("phone") || "").trim();
+            const role = String(formData.get("role") || "").trim();
+
+            if (fullName.length < 2) {
+                waitlistStatus.textContent = "يرجى إدخال اسم صحيح.";
                 return;
             }
 
-            const email = prompt("أدخل بريدك الإلكتروني:");
-            if (!email || !email.includes("@")) {
-                alert("يرجى إدخال بريد إلكتروني صحيح.");
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                waitlistStatus.textContent = "يرجى إدخال بريد إلكتروني صحيح.";
                 return;
             }
+
+            if (phone.length < 8) {
+                waitlistStatus.textContent = "يرجى إدخال رقم هاتف صحيح.";
+                return;
+            }
+
+            if (!role) {
+                waitlistStatus.textContent = "يرجى اختيار نوع نشاطك.";
+                return;
+            }
+
+            waitlistSubmit.disabled = true;
+            waitlistSubmit.querySelector("span").textContent = "جاري الإرسال...";
+            waitlistStatus.textContent = "";
 
             const { error } = await supabase
                 .from("ios_waitlist_registrations")
                 .insert({
-                    full_name: name.trim(),
-                    email: email.trim(),
-                    role: "أفضل عدم الإجابة"
+                    full_name: fullName,
+                    email: email,
+                    phone: phone,
+                    role: role
                 });
+
+            waitlistSubmit.disabled = false;
+            waitlistSubmit.querySelector("span").textContent = "إرسال";
 
             if (error) {
                 console.error("iOS waitlist registration failed:", error);
-                alert("يتوفر قريبًا على App Store");
+                waitlistStatus.textContent = "حدث خطأ أثناء الإرسال. حاول مرة أخرى.";
                 return;
             }
 
-            alert("تم تسجيلك بنجاح! سنخبرك عند توفر Kilix على App Store.");
+            waitlistForm.reset();
+            waitlistStatus.textContent = "تمت إضافتك إلى قائمة الانتظار";
+            waitlistStatus.style.color = "var(--orange)";
+
+            setTimeout(function () {
+                closeWaitlistModal();
+            }, 1800);
         });
     }
 
