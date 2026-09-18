@@ -1945,3 +1945,192 @@ img {
     outline-offset:
         3px;
 }
+
+
+/* =========================================================
+   16. iOS WAITLIST MODAL
+   ========================================================= */
+
+.waitlist-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--transition), visibility var(--transition);
+}
+
+.waitlist-modal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.waitlist-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 46, 80, 0.58);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.waitlist-dialog {
+    position: relative;
+    width: min(100%, 460px);
+    max-height: min(92vh, 720px);
+    overflow-y: auto;
+    padding: 32px 28px 28px;
+    background: var(--white);
+    border: 1px solid rgba(24, 55, 92, 0.08);
+    border-radius: 26px;
+    box-shadow: 0 25px 70px rgba(16, 46, 80, 0.24);
+    transform: translateY(18px) scale(0.97);
+    transition: transform var(--transition);
+}
+
+.waitlist-modal.open .waitlist-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.waitlist-close {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--navy-soft);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.waitlist-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 15px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange-soft);
+    color: var(--orange);
+    font-size: 1.65rem;
+}
+
+.waitlist-dialog h2 {
+    margin: 0 0 8px;
+    text-align: center;
+    color: var(--navy);
+    font-size: 1.65rem;
+    font-weight: 900;
+}
+
+.waitlist-description {
+    margin: 0 auto 22px;
+    max-width: 350px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.waitlist-form label {
+    color: var(--navy);
+    font-size: 0.88rem;
+    font-weight: 800;
+    margin-top: 4px;
+}
+
+.waitlist-form input,
+.waitlist-form select {
+    width: 100%;
+    min-height: 50px;
+    padding: 11px 14px;
+    border: 1px solid rgba(24, 55, 92, 0.14);
+    border-radius: 13px;
+    background: #fff;
+    color: var(--navy);
+    font-family: inherit;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.waitlist-form input:focus,
+.waitlist-form select:focus {
+    border-color: rgba(255, 101, 0, 0.55);
+    box-shadow: 0 0 0 4px rgba(255, 101, 0, 0.10);
+}
+
+.waitlist-form select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.waitlist-submit {
+    min-height: 54px;
+    margin-top: 10px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--orange);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 900;
+    box-shadow: var(--shadow-button);
+    transition: transform var(--transition), background var(--transition);
+}
+
+.waitlist-submit:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+.waitlist-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    transform: none;
+}
+
+.waitlist-status {
+    min-height: 22px;
+    margin: 4px 0 0;
+    text-align: center;
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .waitlist-modal {
+        padding: 14px;
+    }
+
+    .waitlist-dialog {
+        padding: 30px 20px 22px;
+        border-radius: 22px;
+    }
+
+    .waitlist-dialog h2 {
+        font-size: 1.45rem;
+    }
+}
