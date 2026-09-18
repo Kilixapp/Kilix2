@@ -80,11 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       2. SUPABASE + IOS APP STORE - COMING SOON
+       2. SUPABASE DOWNLOAD + IOS APP STORE
     ========================================== */
 
     const SUPABASE_URL = "https://xsswxjaaqhkbsheeclge.supabase.co";
     const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4Zq8XdOzwyqElOEd-4tPvQ_70y1weCa";
+    const ANDROID_BUCKET = "android-apps";
+    const ANDROID_FILE = "kilix.apk";
 
     let supabase = null;
 
@@ -95,6 +97,34 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
+    /* Android: download the APK directly from Supabase Storage */
+    const androidDownloadButton = document.querySelector(".btn-primary");
+
+    if (androidDownloadButton) {
+        androidDownloadButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            if (!supabase) {
+                alert("تعذر الاتصال بخادم التحميل. حاول مرة أخرى.");
+                return;
+            }
+
+            const { data } = supabase.storage
+                .from(ANDROID_BUCKET)
+                .getPublicUrl(ANDROID_FILE, {
+                    download: "kilix.apk"
+                });
+
+            if (!data || !data.publicUrl) {
+                alert("تعذر تجهيز تحميل التطبيق. حاول مرة أخرى.");
+                return;
+            }
+
+            window.location.href = data.publicUrl;
+        });
+    }
+
+    /* iOS: register interest for App Store availability */
     const iosDownloadButton = document.getElementById("iosDownloadButton");
 
     if (iosDownloadButton) {
@@ -134,20 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             alert("تم تسجيلك بنجاح! سنخبرك عند توفر Kilix على App Store.");
-        });
-    }
-
-
-
-
-    const iosDownloadButton = document.getElementById("iosDownloadButton");
-
-    if (iosDownloadButton) {
-        iosDownloadButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            alert("يتوفر قريبًا على App Store");
         });
     }
 
